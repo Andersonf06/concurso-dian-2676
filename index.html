@@ -1,0 +1,1316 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Expediente DIAN 2676</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Preparación para el concurso DIAN 2676 · Gestor II 302-02 Fiscalización y Liquidación">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: expediente de fiscalización — barra lateral de folios a la izquierda, hoja de trabajo a la derecha; en móvil, pestañas inferiores. */
+:root{
+  --paper:#f3f5f4; --sheet:#ffffff; --ink:#14232f; --muted:#5b6b74; --line:#d6dedd;
+  --accent:#0f5c63; --accent-ink:#ffffff; --accent-soft:#dcebea;
+  --seal:#b23a2c; --seal-soft:#f6e1dd; --ok:#22744a; --ok-soft:#dcefe3; --warn:#a86a07; --warn-soft:#f6ead2;
+  --display:'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --body:'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --mono:'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#0f1719; --sheet:#162125; --ink:#e4ecec; --muted:#93a5aa; --line:#2a393d;
+  --accent:#5fb7b5; --accent-ink:#06201f; --accent-soft:#1d3a3c;
+  --seal:#ee7f6f; --seal-soft:#3a1f1b; --ok:#6fcf98; --ok-soft:#173326; --warn:#e2b25a; --warn-soft:#352812; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --paper:#0f1719; --sheet:#162125; --ink:#e4ecec; --muted:#93a5aa; --line:#2a393d;
+  --accent:#5fb7b5; --accent-ink:#06201f; --accent-soft:#1d3a3c;
+  --seal:#ee7f6f; --seal-soft:#3a1f1b; --ok:#6fcf98; --ok-soft:#173326; --warn:#e2b25a; --warn-soft:#352812; color-scheme:dark }
+*{box-sizing:border-box}
+html,body{background:var(--paper);color:var(--ink)}
+body{font:15px/1.55 var(--body);margin:0}
+button{font:inherit;color:inherit}
+a{color:var(--accent)}
+.app{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:100vh}
+.side{position:sticky;top:0;height:100vh;border-right:1px solid var(--line);background:var(--sheet);display:flex;flex-direction:column;gap:20px;padding:24px 16px;padding-left:max(16px,env(safe-area-inset-left,0px))}
+.brand{font:800 20px/1.1 var(--display);letter-spacing:-.01em}
+.brand small{display:block;font:500 11px/1.4 var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:6px}
+.nav{display:flex;flex-direction:column;gap:4px}
+.nav button{all:unset;cursor:pointer;padding:9px 12px;border-radius:6px;display:flex;gap:10px;align-items:center;color:var(--muted);font-weight:500}
+.nav button:hover{background:var(--accent-soft);color:var(--ink)}
+.nav button.on{background:var(--accent);color:var(--accent-ink)}
+.nav button:focus-visible,.btn:focus-visible,.opt:focus-visible,.trow:focus-visible,.card:focus-visible,.planitem:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.side .foot{margin-top:auto;font:500 11px/1.5 var(--mono);color:var(--muted)}
+main{padding-block:32px 96px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));max-width:900px;width:100%;margin:0 auto;min-width:0}
+h1,h2{font-family:var(--display);text-wrap:balance;letter-spacing:-.015em;margin:0}
+h1{font-size:clamp(34px,6vw,56px);font-weight:800;line-height:1}
+h1 em{font-style:normal;color:var(--seal)}
+.h1s{font-size:clamp(26px,4vw,34px);font-weight:800}
+h2{font-size:19px;font-weight:600}
+.eyebrow{font:500 11px/1.5 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:12px}
+.lead{color:var(--muted);max-width:65ch;margin:12px 0 0}
+.muted{color:var(--muted)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.hero{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:end;padding-bottom:28px;border-bottom:2px solid var(--ink)}
+.kpis{display:grid;gap:8px}
+.kpi{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:0 12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.kpi span{font-size:13px;color:var(--muted)}
+.kpi b{font:600 26px/1 var(--mono);grid-row:span 2}
+.kpi small{font-size:12px;color:var(--muted)}
+.ok{color:var(--ok)} .bad{color:var(--seal)}
+.block{margin-top:36px;display:grid;gap:14px}
+.bh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.plan{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:p}
+.planitem{all:unset;cursor:pointer;display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:2px 12px;align-items:center;width:100%;box-sizing:border-box;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.planitem::before{counter-increment:p;content:counter(p);grid-row:span 2;font:600 13px var(--mono);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
+.planitem b{font-weight:600}.planitem span{color:var(--muted);font-size:13px;grid-column:2}
+.planitem i{grid-row:1/span 2;grid-column:3;font-style:normal;color:var(--accent)}
+.planitem:hover{border-color:var(--accent)}
+.tlist{display:grid;border-top:1px solid var(--line)}
+.trow{all:unset;cursor:pointer;display:grid;grid-template-columns:28px minmax(0,1fr) minmax(90px,30%);gap:12px;align-items:center;padding:12px 4px;border-bottom:1px solid var(--line)}
+.trow:hover{background:var(--accent-soft)}
+.tn{display:grid;min-width:0}.tn small{color:var(--muted);font-size:12px}
+.ti{font-size:18px}
+.bar{display:block;height:8px;border-radius:4px;background:var(--line);overflow:hidden;min-width:60px}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.bar.g i{background:var(--ok)}.bar.y i{background:var(--warn)}.bar.r i{background:var(--seal)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.cards.three{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-top:20px}
+.card{all:unset;cursor:pointer;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:16px}
+.card:hover{border-color:var(--accent)}
+.card small{color:var(--muted);font-size:12px}
+.card .big{font-size:40px;line-height:1;color:var(--accent)}
+.link{all:unset;cursor:pointer;color:var(--accent);font-weight:500;font-size:14px}
+.row-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.btn{cursor:pointer;border:1px solid var(--line);background:var(--sheet);border-radius:6px;padding:10px 16px;font-weight:500}
+.btn:hover:not(:disabled){border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.danger{color:var(--seal)}
+.btn:disabled{opacity:.45;cursor:default}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--accent-soft);border-radius:999px;padding:5px 12px;font-size:13px}
+.ficha{margin-top:24px;background:var(--sheet);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:4px;padding:20px 22px}
+.ficha ul{margin:12px 0 0;padding-left:20px;display:grid;gap:10px;max-width:72ch}
+.qtop{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.clock{font-size:18px;color:var(--ink)} .clock.late{color:var(--seal)}
+.prog{margin:12px 0 20px}
+.qcard{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:clamp(18px,4vw,30px)}
+.qtag{font:500 11px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:12px}
+.qtext{font-size:18px;line-height:1.5;margin:0 0 20px;max-width:68ch}
+.qtext.sm{font-size:15px;margin-bottom:8px;font-weight:500}
+.opts{display:grid;gap:10px}
+.opt{all:unset;cursor:pointer;box-sizing:border-box;display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;align-items:start;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+.opt .L{font:600 14px/32px var(--mono);text-align:center;border-radius:50%;background:var(--sheet);border:1px solid var(--line);height:32px}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--seal);background:var(--seal-soft)}
+.opt:disabled{cursor:default}
+.fb{margin-top:16px;padding:14px 16px;border-radius:6px;background:var(--ok-soft)}
+.fb.bad{background:var(--seal-soft)}
+.ref{display:inline-block;margin-left:6px;font-size:12px;color:var(--muted)}
+.qnav{display:flex;justify-content:space-between;gap:8px;margin-top:16px}
+.grid-nav{display:flex;flex-wrap:wrap;gap:4px;margin-top:20px}
+.gn{width:34px;height:30px;border:1px solid var(--line);background:var(--sheet);border-radius:4px;font:500 12px var(--mono);cursor:pointer}
+.gn.done{background:var(--accent-soft)}.gn.cur{border-color:var(--ink);border-width:2px}
+.result{display:flex;flex-wrap:wrap;gap:16px;margin-top:20px}
+.score{flex:1 1 220px;border:2px solid currentColor;border-radius:8px;padding:20px;display:grid;gap:4px;background:var(--sheet)}
+.score span{font-size:64px;line-height:1}
+.score small{color:var(--muted)}
+.score.ok{color:var(--ok)}.score.bad{color:var(--seal)}.score.sm{color:var(--ink);border-color:var(--line);border-width:1px}
+.score.sm span{font-size:40px}
+.note{background:var(--warn-soft);padding:12px 14px;border-radius:6px}
+.rev{border-top:1px solid var(--line);padding-top:12px}
+.wrongtxt{color:var(--seal);margin:4px 0}.righttxt{color:var(--ok);margin:4px 0;font-weight:500}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{text-align:left;font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:8px;border-bottom:1px solid var(--line)}
+td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+td:last-child .bar{min-width:80px}
+.chart svg{width:100%;height:auto;max-width:640px}
+.gl{stroke:var(--line);stroke-width:1}.gl70{stroke:var(--seal);stroke-dasharray:4 4;stroke-width:1.2}
+.ln{fill:none;stroke:var(--accent);stroke-width:2.5}
+.dot.ok{fill:var(--ok)}.dot.bad{fill:var(--seal)}
+.ax{fill:var(--muted);font:11px var(--mono)}
+.days{display:flex;gap:6px;align-items:flex-end;overflow-x:auto;padding-bottom:4px}
+.day{display:grid;justify-items:center;gap:2px;min-width:38px}
+.day i{display:block;width:18px;background:var(--accent);border-radius:3px 3px 0 0}
+.day small{font-size:10px;color:var(--muted)}
+textarea{width:100%;font:12px var(--mono);border:1px solid var(--line);border-radius:6px;padding:10px;background:var(--sheet);color:var(--ink);margin-top:10px}
+.lk{display:grid;gap:12px;margin-top:16px}
+.lki{border:1px solid var(--line);border-radius:8px;background:var(--sheet);padding:14px;margin:0;min-width:0}
+.lki legend{padding:0 4px;font-weight:500}
+.lko{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:10px}
+.lko label{display:block;cursor:pointer}
+.lko input{position:absolute;opacity:0}
+.lko span{display:block;text-align:center;font-size:12px;padding:8px 4px;border:1px solid var(--line);border-radius:6px;background:var(--paper);height:100%}
+.lko input:checked+span{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.lko input:focus-visible+span{outline:2px solid var(--accent)}
+@media (max-width:760px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .side{position:fixed;top:auto;bottom:0;left:0;right:0;height:auto;z-index:20;flex-direction:row;padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));border-right:0;border-top:1px solid var(--line)}
+  .brand,.side .foot{display:none}
+  .nav{flex-direction:row;justify-content:space-between;width:100%;gap:2px}
+  .nav button{flex-direction:column;gap:2px;font-size:10px;padding:6px 4px;flex:1;justify-content:center;text-align:center}
+  .nav .nl{display:block}
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .lko{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .trow{grid-template-columns:24px minmax(0,1fr) 70px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand">Expediente DIAN 2676<small>Gestor II · 302-02 · AT-FL-3007</small></div>
+    <nav class="nav" aria-label="Secciones">
+      <button data-go="inicio" data-v="inicio"><span aria-hidden="true">◉</span><span class="nl">Inicio</span></button>
+      <button data-go="temas" data-v="temas"><span aria-hidden="true">▤</span><span class="nl">Temario</span></button>
+      <button data-go="practicar" data-v="practicar"><span aria-hidden="true">↻</span><span class="nl">Practicar</span></button>
+      <button data-go="simulacro" data-v="simulacro"><span aria-hidden="true">◷</span><span class="nl">Simulacro</span></button>
+      <button data-go="likert" data-v="likert"><span aria-hidden="true">≡</span><span class="nl">Likert</span></button>
+      <button data-go="progreso" data-v="progreso"><span aria-hidden="true">↗</span><span class="nl">Progreso</span></button>
+      <button data-go="info" data-v="info"><span aria-hidden="true">ⓘ</span><span class="nl">Examen</span></button>
+    </nav>
+    <div class="foot">Corte normativo: normas expedidas antes del 19-jun-2026.<br>Material de práctica; no son preguntas reales del examen.</div>
+  </aside>
+  <main id="main"></main>
+</div>
+<script>// Temas alineados a la ficha AT-FL-3007 (Gestor II 302-02, Fiscalización y Liquidación)
+// peso = participación estimada en los simulacros (suma 100)
+window.TEMAS = [
+ {id:'fisc', nombre:'Fiscalización y determinación tributaria', grupo:'Funcional específica', peso:20, icon:'🔎',
+  eje:'Competencia funcional 1: La determinación y el control tributario · Eje 17',
+  ficha:[
+  'Facultades de fiscalización (art. 684 ET): verificar exactitud de declaraciones, investigar hechos generadores no declarados, citar o requerir a terceros, exigir libros y soportes, ordenar inspecciones tributarias y contables.',
+  'Requerimiento ordinario (art. 686 ET): pide información; plazo de respuesta no inferior a 15 días calendario. No es acto previo obligatorio.',
+  'Emplazamiento para corregir (art. 685 ET): facultativo; da 1 mes para corregir con sanción por corrección del 20 %. No responderlo no genera sanción. Suspende 1 mes el término para notificar el requerimiento especial.',
+  'Requerimiento especial (arts. 702-705 ET): acto previo OBLIGATORIO a la liquidación oficial de revisión. Se notifica dentro de los 3 años siguientes al vencimiento del plazo para declarar (si la declaración fue extemporánea, desde su presentación).',
+  'Respuesta al requerimiento especial: 3 meses (art. 707 ET). Ampliación del requerimiento: dentro de los 3 meses siguientes al vencimiento del plazo para responder (art. 708); respuesta a la ampliación entre 3 y 6 meses.',
+  'Suspensión del término (art. 706 ET): inspección tributaria de oficio → 3 meses; inspección a solicitud del contribuyente → mientras dure; emplazamiento para corregir → 1 mes.',
+  'Liquidación oficial de revisión (art. 710 ET): dentro de los 6 meses siguientes al vencimiento del término para responder el requerimiento o su ampliación. Debe haber correspondencia con el requerimiento (art. 711).',
+  'Aceptación de hechos: en la respuesta al requerimiento la sanción por inexactitud se reduce a la cuarta parte (art. 709); tras la liquidación de revisión, dentro del término para el recurso, se reduce a la mitad (art. 713).',
+  'Omisos: emplazamiento para declarar (art. 715 ET) con 1 mes para declarar → si no declara: sanción por no declarar (art. 643) y liquidación de aforo dentro de los 5 años siguientes al vencimiento del plazo (art. 717).',
+  'Firmeza (art. 714 ET): regla general 3 años desde el vencimiento del plazo para declarar; declaraciones con pérdidas fiscales o sujetas a precios de transferencia: 5 años.',
+  'Corrección que aumenta el impuesto (art. 588 ET): dentro de los 3 años siguientes al vencimiento y antes de que se notifique requerimiento especial o pliego de cargos, liquidando sanción por corrección.',
+  'Declaración no presentada (art. 580 ET): sin identificación del declarante, sin factores para identificar bases gravables, sin firma del obligado, o sin firma de contador/revisor fiscal cuando es obligatoria.',
+  'Régimen probatorio: los hechos consignados en las declaraciones se presumen ciertos (art. 746); los vacíos probatorios se resuelven a favor del contribuyente cuando no está obligado a probar (art. 745).',
+  'Inspección tributaria (art. 779 ET): medio de prueba para verificar exactitud; se decreta por auto y se levanta acta. Inspección contable (art. 782): acta firmada, copia al contribuyente.',
+  'Recurso de reconsideración (art. 720 ET): 2 meses desde la notificación. La DIAN tiene 1 año para resolverlo (art. 732); si no lo hace, opera el silencio administrativo POSITIVO (art. 734).',
+  'Abuso en materia tributaria (art. 869 ET): uso de operaciones artificiales sin propósito comercial para obtener un beneficio tributario; la DIAN puede recaracterizarlas.',
+  'Devoluciones: solicitud dentro de los 2 años siguientes al vencimiento del plazo para declarar (art. 854); la DIAN resuelve en 50 días hábiles (art. 855), 20 días con garantía (art. 860).',
+  'Cobro: la acción de cobro prescribe en 5 años (art. 817 ET). Intereses moratorios: tasa de usura menos 2 puntos (art. 635).'
+ ]},
+ {id:'sanc', nombre:'Régimen sancionatorio tributario', grupo:'Funcional específica', peso:9, icon:'⚖️',
+  eje:'Competencia funcional 1 · Proferir actos administrativos (función 4)',
+  ficha:[
+  'Sanción mínima: 10 UVT (art. 639 ET).',
+  'Extemporaneidad antes de emplazamiento (art. 641): 5 % del impuesto por mes o fracción, máximo 100 %. Después del emplazamiento (art. 642): 10 % por mes, máximo 200 %.',
+  'No declarar (art. 643): en renta, 20 % del valor de las consignaciones o de los ingresos brutos (el mayor). Si declara dentro del término para recurrir la resolución sanción, se reduce al 50 %.',
+  'Corrección (art. 644): 10 % del mayor valor a pagar; 20 % si se corrige después de notificado el emplazamiento para corregir o el auto de inspección.',
+  'Inexactitud (art. 647): omisión de ingresos, costos o deducciones inexistentes, datos falsos, retenciones no efectuadas. NO hay inexactitud por diferencia de criterio sobre el derecho aplicable si los hechos son completos y verdaderos.',
+  'Sanción por inexactitud (art. 648): regla general 100 % de la diferencia entre el saldo a pagar determinado por la DIAN y el declarado.',
+  'Sanciones en resolución independiente: requieren pliego de cargos previo y oportunidad de respuesta (art. 637-638 ET).',
+  'Clausura del establecimiento (art. 657): por no facturar u otras causales; sello "CERRADO POR EVASIÓN".',
+  'Principios sancionatorios (art. 197 Ley 1607 / art. 640 ET): legalidad, lesividad, favorabilidad, proporcionalidad y gradualidad.',
+  'Proveedores ficticios (art. 671): los costos y deducciones soportados en operaciones con ellos no son aceptados y se sanciona al usuario.'
+ ]},
+ {id:'sist', nombre:'Generalidades del sistema tributario', grupo:'Funcional específica', peso:7, icon:'🏛️',
+  eje:'Eje 16: Generalidades al sistema tributario, aduanero y cambiario',
+  ficha:[
+  'Elementos del tributo (art. 338 C.P.): sujeto activo, sujeto pasivo, hecho generador, base gravable y tarifa.',
+  'Obligación sustancial: pagar el tributo; obligaciones formales: declarar, inscribirse en el RUT, facturar, informar, llevar contabilidad.',
+  'Tributos nacionales administrados por la DIAN: renta y complementarios, IVA, impuesto al consumo, timbre, GMF, patrimonio, carbono, retención en la fuente, tributos aduaneros. ICA y predial son municipales.',
+  'IVA (art. 420 ET): hechos generadores — venta de bienes, prestación de servicios, importación de bienes y juegos de suerte y azar. Tarifa general 19 % (art. 468).',
+  'Exentos vs excluidos: los exentos están gravados a tarifa 0 % y dan derecho a impuestos descontables/devolución; los excluidos no causan IVA.',
+  'Retención en la fuente (art. 367): mecanismo de recaudo anticipado del impuesto en el mismo ejercicio en que se causa.',
+  'Residencia fiscal persona natural (art. 10): permanecer más de 183 días calendario (continuos o discontinuos) en un periodo de 365 días.',
+  'RUT (art. 555-2): mecanismo único para identificar, ubicar y clasificar a los sujetos de obligaciones administradas por la DIAN.',
+  'Facturación electrónica (art. 616-1): validación previa por la DIAN.',
+  'Régimen Simple de Tributación (art. 903 y ss.): modelo opcional que integra renta, consumo e ICA consolidado.'
+ ]},
+ {id:'adua', nombre:'Fiscalización aduanera', grupo:'Funcional específica', peso:14, icon:'🚢',
+  eje:'Competencia funcional 4: Fiscalización aduanera · Función 9 (destrucción de mercancías)',
+  ficha:[
+  'Marco: Ley 1609 de 2013 (ley marco de aduanas) y Decreto 1165 de 2019. Régimen sancionatorio: el Decreto Ley 920 de 2023 fue declarado inexequible (C-072 de 2025) con efectos diferidos al 20-jun-2026; la Ley 2586 de 2026 (19-jun-2026) adoptó el nuevo régimen. Ojo: el corte normativo del examen es "antes del 19 de junio de 2026".',
+  'Control aduanero: previo (antes de la llegada/presentación), simultáneo (durante el proceso de desaduanamiento: inspección física o documental) y posterior (fiscalización después del levante).',
+  'Levante: acto por el cual la autoridad aduanera permite la disposición de la mercancía, previo cumplimiento de requisitos.',
+  'Regímenes: importación (ordinaria, temporal, en cumplimiento de garantía, reimportación…), exportación (definitiva, temporal…), tránsito aduanero y depósito.',
+  'Tránsito: transporte de mercancías bajo control aduanero de una aduana a otra en el territorio, con suspensión de tributos.',
+  'Aprehensión: medida cautelar que retiene mercancías sobre las que se configura una causal de decomiso. Decomiso: decisión que transfiere a la Nación la propiedad de la mercancía cuya legal introducción no se acredita.',
+  'Valoración aduanera (Acuerdo OMC / Decisión CAN 571): el primer método es el valor de transacción; los demás se aplican en orden sucesivo.',
+  'Clasificación arancelaria: Sistema Armonizado; se aplica primero la Regla General Interpretativa 1 (textos de partidas y notas de sección o capítulo).',
+  'Firmeza de la declaración aduanera: 3 años desde su aceptación, salvo que se haya notificado requerimiento especial aduanero.',
+  'Contrabando: delito (art. 319 C.P., Ley 1762 de 2015) cuando supera 50 SMMLV; por debajo es infracción administrativa con decomiso. Abierto: mercancía que no se presenta a la aduana. Técnico: se presenta pero con irregularidades (subfacturación, clasificación u origen falsos).',
+  'Mercancía averiada, defectuosa o impropia: el importador puede solicitar su destrucción; la DIAN participa en la diligencia, verifica identidad y cantidad, y se levanta acta.',
+  'OEA (Operador Económico Autorizado): usuario confiable con beneficios de control por cumplir requisitos de seguridad.'
+ ]},
+ {id:'camb', nombre:'Régimen cambiario', grupo:'Funcional específica', peso:10, icon:'💱',
+  eje:'Competencia funcional 2: Régimen cambiario en las operaciones de competencia de la DIAN',
+  ficha:[
+  'Ley marco: Ley 9 de 1991. Autoridad cambiaria (regula): Junta Directiva del Banco de la República. Regulación operativa: Resolución Externa 1 de 2018 y Circular DCIP-83.',
+  'Competencia de la DIAN: vigilar el cumplimiento del régimen cambiario en importaciones y exportaciones de bienes y servicios, sus gastos asociados, su financiación y la sub/sobrefacturación; y las operaciones no asignadas a otra entidad. Supersociedades vigila inversiones internacionales y endeudamiento externo de sus vigiladas.',
+  'Operaciones de canalización obligatoria: importaciones y exportaciones de bienes, endeudamiento externo, inversiones de capital del exterior y colombianas en el exterior, inversiones financieras y en activos en el exterior, avales y garantías en moneda extranjera, y derivados.',
+  'Servicios, transferencias y otros conceptos son operaciones de "mercado libre": pueden canalizarse voluntariamente.',
+  'Se canaliza a través de intermediarios del mercado cambiario (IMC) o de cuentas de compensación registradas ante el Banco de la República.',
+  'Régimen sancionatorio y procedimiento: Decreto Ley 2245 de 2011. El acto de formulación de cargos debe notificarse dentro de los 5 años siguientes a la ocurrencia de los hechos (art. 5); es norma especial que prevalece sobre el art. 52 del CPACA.',
+  'Infracción continuada: el término corre desde el último hecho; el incumplimiento de plazos NO se considera infracción continuada.',
+  'No hay infracción cuando el error puede aclararse o actualizarse en cualquier tiempo según el régimen cambiario.',
+  'Inversión extranjera: régimen general en el Decreto 119 de 2017 (compilado en el Decreto 1068 de 2015); se registra ante el Banco de la República.'
+ ]},
+ {id:'intl', nombre:'Fiscalización internacional', grupo:'Funcional específica', peso:8, icon:'🌐',
+  eje:'Competencia funcional 3: La fiscalización internacional',
+  ficha:[
+  'Precios de transferencia (arts. 260-1 y ss. ET): las operaciones con vinculados del exterior deben pactarse como entre independientes (principio de plena competencia).',
+  'Obligados a documentación comprobatoria y declaración informativa: contribuyentes con patrimonio bruto ≥ 100.000 UVT o ingresos brutos ≥ 61.000 UVT que tengan operaciones con vinculados (arts. 260-5 y 260-9).',
+  'Métodos: precio comparable no controlado, precio de reventa, costo adicionado, partición de utilidades y márgenes transaccionales de utilidad de operación.',
+  'Operaciones con jurisdicciones no cooperantes, de baja o nula imposición o regímenes preferenciales quedan sometidas al régimen aunque no haya vinculación (art. 260-7).',
+  'Establecimiento permanente (art. 20-1): lugar fijo de negocios en Colombia por el que una empresa extranjera realiza su actividad, o agente dependiente que celebra contratos a su nombre.',
+  'Sociedad nacional por sede efectiva de administración (art. 12-1).',
+  'ECE – Entidades Controladas del Exterior (arts. 882 y ss.): las rentas pasivas de la ECE se gravan en Colombia en cabeza del residente controlante.',
+  'Intercambio de información: Convención Multilateral de Asistencia Administrativa Mutua (Ley 1661 de 2013), estándar CRS (OCDE) y acuerdo FATCA con EE. UU.',
+  'Doble imposición: convenios (CDI) y descuento por impuestos pagados en el exterior (art. 254 ET).',
+  'Registro Único de Beneficiarios Finales – RUB (Ley 2155 de 2021, Res. DIAN 164 de 2021).',
+  'Requisito adicional: los empleos de la Subdirección de Gestión de Fiscalización Internacional exigen inglés B2.'
+ ]},
+ {id:'evas', nombre:'Evasión, elusión, contrabando y LA/FT', grupo:'Funcional específica', peso:8, icon:'🕵️',
+  eje:'Eje 7 · Propósito principal del empleo · Función 3 (ROS de LA/FT)',
+  ficha:[
+  'Evasión: incumplimiento ilegal (ocultar ingresos, inflar costos). Elusión: aprovechar vacíos o formas legales para reducir la carga. Abuso: operaciones artificiales sin propósito económico (art. 869 ET).',
+  'Delitos tributarios del Código Penal: omisión del agente retenedor (art. 402: no consignar retenciones dentro de los 2 meses siguientes al plazo), omisión de activos o inclusión de pasivos inexistentes (art. 434A), defraudación o evasión tributaria (art. 434B).',
+  'Lavado de activos (art. 323 C.P.): etapas — colocación, estratificación (ocultamiento) e integración.',
+  'Financiación del terrorismo (art. 345 C.P.).',
+  'UIAF (Ley 526 de 1999): unidad de inteligencia financiera que recibe y analiza los ROS. El ROS no requiere certeza del delito ni es una denuncia penal, y debe mantenerse en reserva frente al reportado.',
+  'Lavado basado en comercio (TBML): sub/sobrefacturación de importaciones o exportaciones, mercancía fantasma, triangulaciones.',
+  'Favorecimiento de contrabando (art. 320 C.P.): poseer, transportar o comercializar mercancía de contrabando.',
+  'Ley 1712 de 2014 (transparencia y acceso a información pública) y Ley 2195 de 2022 (transparencia, prevención y lucha contra la corrupción; programas de transparencia y ética empresarial).'
+ ]},
+ {id:'cpaca', nombre:'CPACA y derecho de petición', grupo:'Funcional transversal', peso:9, icon:'📜',
+  eje:'Eje 12: Ley 1437 de 2011 (Títulos I, II y III caps. I y V-VIII) · Eje 13 PQRSF',
+  ficha:[
+  'OJO al alcance del eje: Título I (principios), Título II (petición) y Título III capítulos I (reglas generales), V (notificaciones), VI (recursos), VII (silencio) y VIII (conclusión). NO incluye el sancionatorio (cap. III).',
+  'Art. 2: el CPACA aplica sin perjuicio de procedimientos especiales (como el tributario del ET); en lo no previsto se aplica el CPACA.',
+  'Principios (art. 3): debido proceso, igualdad, imparcialidad, buena fe, moralidad, participación, responsabilidad, transparencia, publicidad, coordinación, eficacia, economía y celeridad.',
+  'Petición (Ley 1755 de 2015, art. 14): regla general 15 días; documentos/información 10 días; consultas 30 días; entre autoridades 10 días (art. 30). Si no se puede responder a tiempo, se informa antes del vencimiento, sin exceder el doble del término inicial.',
+  'Petición incompleta (art. 17): se requiere al peticionario dentro de 10 días para que complete en 1 mes (prorrogable hasta 1 mes más); si no lo hace, desistimiento tácito.',
+  'Falta de competencia (art. 21): remitir dentro de los 5 días siguientes al recibo e informar al peticionario.',
+  'Notificación personal (art. 67); citación dentro de 5 días de la expedición del acto (art. 68); si no comparece en 5 días, notificación por aviso, que se entiende surtida al finalizar el día siguiente a su entrega (art. 69).',
+  'Notificación irregular (art. 72): el acto no produce efectos, salvo conducta concluyente del interesado.',
+  'Recursos (art. 74): reposición (ante quien decidió), apelación (ante el inmediato superior) y queja (cuando se rechaza la apelación). Plazo: 10 días siguientes a la notificación (art. 76). Reposición y queja no son obligatorios.',
+  'Los recursos se conceden en efecto suspensivo (art. 79). Periodo probatorio en recursos: hasta 30 días.',
+  'Silencio negativo: 3 meses sin decisión de la petición (art. 83); 2 meses sin decidir recursos (art. 86). Silencio positivo solo cuando la ley lo prevé (art. 84).',
+  'Firmeza (art. 87), presunción de legalidad (art. 88), carácter ejecutorio (art. 89) y pérdida de ejecutoria (art. 91: suspensión/anulación, desaparición de fundamentos, 5 años sin ejecutar, condición resolutoria, pérdida de vigencia).',
+  'PQRSF: Petición, Queja (inconformidad con la conducta de un servidor), Reclamo (prestación deficiente del servicio), Sugerencia y Felicitación (también Denuncia).'
+ ]},
+ {id:'const', nombre:'Constitución Política', grupo:'Funcional transversal', peso:6, icon:'🇨🇴',
+  eje:'Eje 15: Derechos fundamentales, principios y estructura del Estado',
+  ficha:[
+  'Art. 1 Estado social de derecho; art. 2 fines esenciales del Estado.',
+  'Art. 6: los particulares responden por infringir la Constitución y las leyes; los servidores públicos además por omisión o extralimitación de funciones.',
+  'Art. 15: intimidad y habeas data; para efectos tributarios o judiciales puede exigirse la presentación de libros de contabilidad y documentos privados en los términos de la ley.',
+  'Art. 23 derecho de petición; art. 29 debido proceso (es nula de pleno derecho la prueba obtenida con violación del debido proceso).',
+  'Art. 86 tutela: protección inmediata de derechos fundamentales; fallo en máximo 10 días.',
+  'Art. 95-9: deber de contribuir al financiamiento de los gastos e inversiones del Estado dentro de conceptos de justicia y equidad.',
+  'Art. 338: en tiempo de paz solo el Congreso, las asambleas y los concejos pueden imponer contribuciones; la ley debe fijar sujetos, hechos, bases y tarifas. Tributos de periodo: rigen desde el periodo que empiece después de la vigencia de la norma.',
+  'Art. 363: el sistema tributario se funda en equidad, eficiencia y progresividad; las leyes tributarias no son retroactivas.',
+  'Art. 209: la función administrativa se rige por igualdad, moralidad, eficacia, economía, celeridad, imparcialidad y publicidad.',
+  'Art. 125: los empleos son de carrera; ingreso y ascenso por mérito. Art. 130: la CNSC administra y vigila las carreras (salvo las especiales de origen constitucional).',
+  'Art. 189-20: el Presidente vela por la estricta recaudación y administración de las rentas públicas.'
+ ]},
+ {id:'gest', nombre:'Gestión pública, MIPG, integridad y servicio', grupo:'Funcional transversal', peso:9, icon:'🗂️',
+  eje:'Ejes 8, 9, 10, 11, 14: herramientas informáticas, gestión documental, MIPG, códigos de integridad y buen gobierno, servicio al ciudadano',
+  ficha:[
+  'MIPG (Decreto 1499 de 2017): 7 dimensiones — Talento humano (corazón del modelo), Direccionamiento estratégico y planeación, Gestión con valores para resultados, Evaluación de resultados, Información y comunicación, Gestión del conocimiento y la innovación, y Control interno. Se mide con el FURAG.',
+  'Esquema de líneas de defensa: línea estratégica (alta dirección), 1.ª línea (líderes de proceso: controles del día a día), 2.ª línea (planeación, supervisión: monitoreo), 3.ª línea (Oficina de Control Interno: evaluación independiente).',
+  'Código de Integridad del servicio público: Honestidad, Respeto, Compromiso, Diligencia y Justicia.',
+  'Gestión documental: Ley 594 de 2000. Ciclo vital: archivo de gestión → central → histórico. Tablas de Retención Documental (TRD), FUID (inventario), Programa de Gestión Documental (PGD). Principios de procedencia y orden original.',
+  'Ley 1712 de 2014: máxima publicidad. Información clasificada (daña derechos de personas: intimidad, secretos comerciales) vs reservada (daña intereses públicos: defensa, seguridad, investigación de delitos). La reserva dura máximo 15 años.',
+  'Reserva tributaria (art. 583 ET): la información de las declaraciones tiene carácter reservado.',
+  'Ley 1474 de 2011: Plan Anticorrupción y de Atención al Ciudadano anual (art. 73).',
+  'Atención preferencial (Decreto 019 de 2012): personas con discapacidad, embarazadas, niños, adultos mayores y veteranos.',
+  'Atención presencial mínima 40 horas a la semana (art. 7 CPACA).',
+  'Estructura de la DIAN: Decreto 1742 de 2020. Carrera específica: Decreto Ley 071 de 2020. Sistema informático tributario: MUISCA.'
+ ]},
+ {id:'integ', nombre:'Integridad', grupo:'Comportamental e integridad', peso:0, icon:'🛡️',
+  eje:'Prueba de Integridad (clasificatoria, 10 %) · Código de Integridad · Comportamiento ético nivel 4',
+  ficha:[
+  'Formato real: autoinforme tipo Likert de 4 opciones (Totalmente en desacuerdo, En desacuerdo, De acuerdo, Totalmente de acuerdo). Mide coherencia ética y confiabilidad.',
+  'Incluye 2 subescalas de control que detectan respuestas exageradamente favorables ("nunca me he equivocado", "jamás he sentido enojo"). Ante afirmaciones absolutas e irreales, lo honesto suele ser no marcar el extremo favorable.',
+  'Dádivas: el servidor no acepta regalos, invitaciones ni beneficios de contribuyentes o usuarios, sin importar su valor. Ofrecimiento indebido → rechazar, dejar constancia e informar.',
+  'Conflicto de intereses: si tienes interés personal, familiar o económico en un asunto (parientes, socios, amigos íntimos), debes declararte impedido y no actuar (Ley 1952 de 2019, CPACA art. 11, Ley 2013 de 2019 sobre declaración de conflictos).',
+  'Reserva tributaria (art. 583 ET): la información de declaraciones y expedientes solo se usa para fines oficiales; no se comenta con terceros, familiares ni medios.',
+  'Uso de recursos públicos: vehículos, equipos, tiempo laboral y sistemas (MUISCA) son para fines del servicio; consultar datos de un contribuyente sin necesidad del trámite es indebido.',
+  'Denuncia de irregularidades: canales formales (superior, Oficina de Control Disciplinario Interno, canal de denuncias de la DIAN); el denunciante de buena fe está protegido.',
+  'Valores del Código de Integridad: Honestidad, Respeto, Compromiso, Diligencia y Justicia.',
+  'Código Disciplinario: Ley 1952 de 2019 (modificada por la Ley 2094 de 2021).'
+ ]},
+ {id:'comp', nombre:'Competencias comportamentales', grupo:'Comportamental e integridad', peso:0, icon:'🤝',
+  eje:'Comportamiento ético (N4), Comunicación efectiva (N3), Adaptabilidad (N3), Trabajo en equipo (N3), Orientación al logro, Orientación al usuario',
+  ficha:[
+  'En el examen real esta prueba es de AUTOINFORME tipo Likert (4 opciones). Aquí se entrena con casos situacionales para que interiorices la conducta esperada.',
+  'Subescalas de control: miden respuestas "exageradamente favorables". Responde con consistencia y realismo; no marques extremos por reflejo.',
+  'Comportamiento ético nivel 4 (el más alto): actúa con integridad aun bajo presión, denuncia irregularidades, rechaza dádivas, es ejemplo para otros.',
+  'Patrón de respuesta correcta: seguir el procedimiento, usar los canales formales, proteger la información reservada, servir al ciudadano con igualdad, informar al superior y documentar.',
+  'Patrones incorrectos: favorecer conocidos, "ayudar" saltándose el procedimiento, ocultar errores propios, ceder a presiones, divulgar información reservada, confrontar en público.',
+  'Trabajo en equipo: compartir información, reconocer aportes, resolver conflictos con diálogo directo y respetuoso.',
+  'Adaptabilidad: asumir cambios normativos o tecnológicos con disposición, aprendiendo rápido.',
+  'Comunicación efectiva: mensajes claros, escucha activa, lenguaje claro con el ciudadano.'
+ ]}
+];
+
+window.EXAMEN = {
+  fecha: '2026-11-08T08:00:00-05:00',
+  proceso: 'Proceso de Selección DIAN 2676',
+  empleo: 'Gestor II · Código 302 · Grado 02 · Ficha AT-FL-3007',
+  minimo: 70
+};
+window.BANK = window.BANK || [];
+window.P = function(t,q,o,a,e,r){ window.BANK.push({id:t+'-'+(window.BANK.length+1),t:t,q:q,o:o,a:a,e:e,r:r||''}); };
+
+// ===================== FISCALIZACIÓN Y DETERMINACIÓN TRIBUTARIA =====================
+P('fisc','Al revisar la declaración de renta del año gravable 2023 de una sociedad, usted encuentra costos sin soporte que reducen el impuesto. Antes de proferir la liquidación oficial de revisión, la DIAN debe obligatoriamente:',
+['Notificar un requerimiento especial que contenga los puntos a modificar y su explicación.','Notificar un emplazamiento para corregir y esperar la respuesta del contribuyente.','Practicar una inspección contable y trasladar el acta al contribuyente.'],0,
+'El requerimiento especial es el único acto previo obligatorio a la liquidación de revisión. El emplazamiento para corregir y la inspección son facultativos.','Arts. 702-703 ET');
+P('fisc','Una persona natural debía declarar renta el 15 de agosto de 2023 y presentó oportunamente. ¿Hasta cuándo, como regla general, puede la DIAN notificarle el requerimiento especial?',
+['Hasta el 15 de agosto de 2025, es decir, dos años después del vencimiento.','Hasta el 15 de agosto de 2026, dentro de los tres años siguientes al vencimiento del plazo para declarar.','Hasta el 15 de agosto de 2028, porque el término general es de cinco años.'],1,
+'El requerimiento especial debe notificarse dentro de los 3 años siguientes al vencimiento del plazo para declarar (o a la presentación, si fue extemporánea).','Art. 705 ET');
+P('fisc','Un contribuyente presentó extemporáneamente su declaración. Para contar el término de notificación del requerimiento especial, la regla es tomar como punto de partida:',
+['La fecha de vencimiento del plazo para declarar, sin excepción.','La fecha de notificación del primer requerimiento ordinario.','La fecha de presentación de la declaración extemporánea.'],2,
+'Cuando la declaración se presenta en forma extemporánea, los 3 años se cuentan desde la fecha de su presentación.','Art. 705 ET');
+P('fisc','El contribuyente le pregunta de cuánto tiempo dispone para responder el requerimiento especial que se le notificó. La respuesta correcta es:',
+['Tres meses contados a partir de su notificación.','Un mes contado a partir de su notificación.','Quince días hábiles contados desde su notificación.'],0,
+'El término para responder el requerimiento especial es de 3 meses contados a partir de su notificación.','Art. 707 ET');
+P('fisc','Vencido el término para responder el requerimiento especial, la DIAN cuenta con el siguiente plazo para notificar la liquidación oficial de revisión:',
+['Un año, contado desde la notificación del requerimiento.','Seis meses, contados desde el vencimiento del término para dar respuesta al requerimiento o a su ampliación.','Tres meses, contados desde la fecha en que se recibió la respuesta.'],1,
+'La liquidación de revisión debe notificarse dentro de los 6 meses siguientes al vencimiento del término para responder el requerimiento o su ampliación.','Art. 710 ET');
+P('fisc','Durante una investigación, la DIAN decreta de oficio una inspección tributaria. Frente al término para notificar el requerimiento especial, esto produce:',
+['La suspensión del término por tres meses contados a partir de la notificación del auto que la decreta.','La interrupción del término, que vuelve a contarse completo desde cero.','Ningún efecto, porque la inspección es un medio de prueba independiente.'],0,
+'La inspección tributaria de oficio suspende el término por 3 meses; la decretada a solicitud del contribuyente lo suspende mientras dure.','Art. 706 ET');
+P('fisc','Usted notifica un emplazamiento para corregir a un contribuyente. Este no responde. ¿Cuál es la consecuencia?',
+['Se le impone automáticamente la sanción por no enviar información.','La no respuesta no ocasiona sanción; la DIAN puede continuar el proceso de determinación.','La declaración se tiene por no presentada.'],1,
+'El emplazamiento para corregir es facultativo; su no respuesta no genera sanción. Si corrige, liquida sanción por corrección del 20 %.','Art. 685 ET');
+P('fisc','Un contribuyente acepta en la respuesta al requerimiento especial los hechos planteados por la DIAN y corrige su declaración. La sanción por inexactitud:',
+['Se reduce a la mitad de la propuesta por la Administración.','Se mantiene igual, porque la aceptación es posterior al inicio del proceso.','Se reduce a la cuarta parte de la planteada por la Administración.'],2,
+'Con ocasión de la respuesta al requerimiento (o a su ampliación), la sanción por inexactitud se reduce a la cuarta parte.','Art. 709 ET');
+P('fisc','Notificada la liquidación oficial de revisión, el contribuyente decide aceptar los hechos dentro del término para interponer el recurso. La sanción por inexactitud se reduce a:',
+['La mitad de la sanción impuesta.','La cuarta parte de la sanción impuesta.','Cero, si paga dentro del mes siguiente.'],0,
+'La corrección provocada por la liquidación de revisión reduce la sanción por inexactitud a la mitad.','Art. 713 ET');
+P('fisc','Una persona jurídica obligada a declarar renta no lo hizo. Como gestor, el primer acto que debe notificarse dentro del proceso de determinación es:',
+['La liquidación de aforo, de manera directa.','El emplazamiento para declarar, otorgando un mes para cumplir.','El requerimiento especial, por tres meses.'],1,
+'A los omisos se les notifica primero el emplazamiento para declarar (1 mes). Si persisten, se impone sanción por no declarar y luego procede la liquidación de aforo.','Arts. 715-717 ET');
+P('fisc','Agotado el procedimiento contra un omiso, la liquidación de aforo puede proferirse dentro de:',
+['Los tres años siguientes al vencimiento del plazo para declarar.','Los dos años siguientes a la notificación de la sanción por no declarar.','Los cinco años siguientes al vencimiento del plazo para declarar.'],2,
+'La liquidación de aforo se profiere dentro de los 5 años siguientes al vencimiento del plazo para declarar.','Art. 717 ET');
+P('fisc','Como regla general, una declaración tributaria presentada oportunamente queda en firme:',
+['Si dentro de los tres años siguientes al vencimiento del plazo para declarar no se ha notificado requerimiento especial.','Si dentro de los cinco años siguientes a su presentación no se ha iniciado cobro coactivo.','Al año siguiente a su presentación, salvo que el contribuyente la corrija.'],0,
+'La regla general de firmeza es de 3 años desde el vencimiento del plazo para declarar.','Art. 714 ET');
+P('fisc','Una sociedad sujeta al régimen de precios de transferencia presentó su declaración de renta. Su término de firmeza es de:',
+['Tres años, como la regla general.','Cinco años.','Diez años, por tratarse de operaciones internacionales.'],1,
+'Las declaraciones sujetas a precios de transferencia y las que determinan o compensan pérdidas fiscales tienen firmeza de 5 años.','Art. 714 ET');
+P('fisc','Un contribuyente quiere corregir su declaración para aumentar el impuesto. Puede hacerlo:',
+['En cualquier momento, incluso después de la liquidación de revisión.','Solamente dentro del mes siguiente al vencimiento del plazo para declarar.','Dentro de los tres años siguientes al vencimiento del plazo para declarar y antes de que se le notifique requerimiento especial o pliego de cargos.'],2,
+'La corrección voluntaria que aumenta el impuesto procede dentro de los 3 años siguientes y antes de notificado el requerimiento especial o pliego de cargos, liquidando sanción por corrección.','Art. 588 ET');
+P('fisc','Al revisar una declaración de IVA observa que no tiene la firma del revisor fiscal, siendo el contribuyente obligado a tenerlo. Esta declaración:',
+['Es válida, pero genera sanción por corrección.','Se tiene por no presentada.','Debe ser corregida de oficio por la DIAN mediante liquidación de corrección aritmética.'],1,
+'La declaración se tiene por no presentada cuando se omite la firma del contador o revisor fiscal existiendo la obligación legal.','Art. 580 ET');
+P('fisc','Durante la investigación no se logra probar un hecho que el contribuyente no estaba obligado a demostrar. Según el régimen probatorio tributario:',
+['El vacío probatorio se resuelve a favor de la Administración.','Debe suspenderse la investigación hasta obtener la prueba.','El vacío probatorio se resuelve a favor del contribuyente.'],2,
+'Los vacíos probatorios se resuelven a favor del contribuyente cuando no se encuentre obligado a probar determinados hechos (in dubio contra fiscum).','Art. 745 ET');
+P('fisc','Los hechos consignados en las declaraciones tributarias:',
+['Se consideran ciertos, siempre que no hayan sido desvirtuados por la Administración.','Carecen de valor probatorio hasta que la DIAN los verifique.','Solo tienen valor si están acompañados de certificación del revisor fiscal.'],0,
+'Presunción de veracidad: los hechos consignados en las declaraciones se consideran ciertos mientras no sean desvirtuados.','Art. 746 ET');
+P('fisc','Usted necesita información de un tercero proveedor para cruzarla con la declaración de un contribuyente investigado. El instrumento adecuado es:',
+['Un requerimiento especial al proveedor.','Un requerimiento ordinario de información con un plazo de respuesta no inferior a 15 días calendario.','Un emplazamiento para declarar al proveedor.'],1,
+'El requerimiento ordinario permite solicitar información a contribuyentes y terceros; el plazo de respuesta no puede ser inferior a 15 días calendario.','Arts. 684 y 686 ET');
+P('fisc','¿Cuál de las siguientes NO es una facultad de fiscalización de la DIAN?',
+['Ordenar la exhibición de libros de contabilidad y sus soportes.','Citar o requerir al contribuyente o a terceros para que rindan informes.','Imponer penas privativas de la libertad por evasión.'],2,
+'Las penas privativas de la libertad son competencia de los jueces penales. Las otras son facultades del art. 684 ET.','Art. 684 ET');
+P('fisc','Al practicar una inspección contable en la sede del contribuyente, usted debe:',
+['Levantar un acta firmada por los funcionarios y el contribuyente, y entregarle copia.','Llevarse los libros originales a la oficina de la DIAN sin dejar constancia.','Limitarse a tomar fotografías sin levantar acta para agilizar.'],0,
+'De la inspección contable se levanta acta que firman los funcionarios y las partes, y se entrega copia; el acta hace parte de la actuación.','Art. 782 ET');
+P('fisc','El contribuyente interpone recurso de reconsideración contra una liquidación oficial de revisión. El plazo para interponerlo es:',
+['Diez días hábiles siguientes a la notificación.','Dos meses siguientes a la notificación del acto.','Tres meses siguientes a la notificación del acto.'],1,
+'El recurso de reconsideración se interpone dentro de los 2 meses siguientes a la notificación.','Art. 720 ET');
+P('fisc','La DIAN no resolvió dentro del año siguiente un recurso de reconsideración interpuesto en debida forma. La consecuencia es:',
+['El recurso se entiende fallado a favor del recurrente (silencio administrativo positivo).','El recurso se entiende negado y el contribuyente puede acudir a la jurisdicción.','El término se prorroga automáticamente por seis meses.'],0,
+'Si la DIAN no resuelve en el término de 1 año, opera el silencio administrativo positivo, que debe ser declarado de oficio o a petición.','Arts. 732 y 734 ET');
+P('fisc','Una sociedad celebra una serie de contratos sin propósito comercial real, cuyo único efecto es trasladar utilidades para reducir el impuesto. Esta conducta corresponde a:',
+['Planeación tributaria legítima que la DIAN no puede cuestionar.','Error de apreciación que no genera consecuencias.','Abuso en materia tributaria, que permite a la DIAN recaracterizar las operaciones.'],2,
+'El abuso tributario es el uso de operaciones artificiales, sin propósito económico o comercial, para obtener un provecho tributario. La DIAN puede desconocerlas y recaracterizarlas.','Art. 869 ET');
+P('fisc','Un contribuyente con saldo a favor en renta solicita devolución. La solicitud debe presentarse:',
+['Dentro del mes siguiente a la presentación de la declaración.','Dentro de los cinco años siguientes al vencimiento del plazo para declarar.','Dentro de los dos años siguientes al vencimiento del plazo para declarar.'],2,
+'La devolución de saldos a favor debe solicitarse a más tardar 2 años después del vencimiento del plazo para declarar.','Art. 854 ET');
+P('fisc','La DIAN debe devolver un saldo a favor, cuando no hay garantía, dentro de los:',
+['Cincuenta días hábiles siguientes a la fecha de la solicitud presentada oportunamente y en debida forma.','Diez días hábiles siguientes a la solicitud.','Seis meses siguientes a la solicitud.'],0,
+'El término general es de 50 días hábiles; con garantía, 20 días hábiles.','Arts. 855 y 860 ET');
+P('fisc','La acción de cobro de las obligaciones tributarias prescribe, como regla general, en:',
+['Tres años.','Cinco años.','Diez años.'],1,
+'La acción de cobro prescribe en 5 años contados según el art. 817 ET.','Art. 817 ET');
+P('fisc','Al notificar un acto de determinación, el contribuyente había informado expresamente una dirección procesal en la respuesta al requerimiento. La DIAN debe:',
+['Notificar a la dirección del RUT, por ser la única válida.','Notificar a la dirección procesal informada para ese proceso.','Notificar por aviso en la página web, sin enviar el acto.'],1,
+'Si dentro del proceso se informa una dirección procesal, la DIAN debe notificar a esa dirección.','Art. 564 ET');
+P('fisc','En un proceso de determinación encuentra que el contribuyente cometió un error aritmético al sumar sus ingresos que generó un menor impuesto. El acto procedente es:',
+['La liquidación oficial de corrección aritmética.','La liquidación de aforo.','La resolución que declara la declaración como no presentada.'],0,
+'Los errores aritméticos (sumas, operaciones, tarifas mal aplicadas) se corrigen mediante liquidación de corrección aritmética.','Arts. 697-698 ET');
+P('fisc','La liquidación oficial de revisión solo puede referirse a los hechos contemplados en el requerimiento especial o en su ampliación. Este es el principio de:',
+['Favorabilidad.','Correspondencia entre la declaración, el requerimiento y la liquidación.','Gradualidad de la sanción.'],1,
+'Debe existir correspondencia: la liquidación de revisión se contrae a la declaración y a los hechos del requerimiento o su ampliación.','Art. 711 ET');
+P('fisc','Un contribuyente investigado le solicita copia del expediente y la oportunidad de presentar pruebas antes de la decisión. Usted debe:',
+['Negarlo, porque el expediente tributario es reservado incluso para él.','Permitirlo, porque el debido proceso garantiza el derecho de defensa y contradicción.','Exigirle que primero pague el mayor impuesto propuesto.'],1,
+'El contribuyente tiene derecho a conocer el expediente y a controvertir pruebas (art. 29 C.P.). La reserva opera frente a terceros, no frente al propio interesado.','Art. 29 C.P.; art. 583 ET');
+P('fisc','Una precrítica de insumos (función 1 del empleo) muestra que un contribuyente reportó ingresos muy inferiores a lo que informan terceros en exógena. Lo procedente es:',
+['Archivar el insumo, porque la exógena no es prueba.','Clasificar el insumo y establecer la pertinencia de iniciar una investigación, documentando el análisis.','Proferir de inmediato una liquidación oficial de revisión.'],1,
+'La precrítica busca clasificar los insumos y determinar si es pertinente abrir investigación, según procedimientos institucionales. La liquidación requiere todo el proceso previo.','Función esencial 1 – Ficha AT-FL-3007');
+P('fisc','Recibe una denuncia anónima, detallada y verificable, sobre ventas sin factura en un establecimiento. Según la función 2 del empleo, usted debe:',
+['Descartarla por ser anónima.','Hacer el análisis preliminar y establecer la pertinencia de iniciar una acción de fiscalización.','Trasladarla directamente a la Fiscalía.'],1,
+'El análisis preliminar de denuncias permite establecer si procede una acción de fiscalización, de acuerdo con la normativa y los lineamientos.','Función esencial 2 – Ficha AT-FL-3007');
+
+// ===================== RÉGIMEN SANCIONATORIO =====================
+P('sanc','Una sanción tributaria liquidada da un valor inferior al mínimo legal. El valor mínimo de cualquier sanción, incluidas las que liquide el contribuyente, es:',
+['5 UVT.','10 UVT.','20 UVT.'],1,'La sanción mínima es equivalente a 10 UVT.','Art. 639 ET');
+P('sanc','Un contribuyente presenta su declaración de renta dos meses y diez días después del vencimiento, sin que haya mediado emplazamiento. La sanción por extemporaneidad es:',
+['5 % del impuesto a cargo por cada mes o fracción de mes, es decir, 15 %.','10 % por cada mes o fracción, es decir, 30 %.','5 % por cada mes completo, es decir, 10 %.'],0,
+'Antes del emplazamiento: 5 % por mes o fracción (3 fracciones = 15 %), sin exceder el 100 % del impuesto.','Art. 641 ET');
+P('sanc','Si el contribuyente declara después de notificado el emplazamiento para declarar, la sanción por extemporaneidad será:',
+['5 % por mes o fracción, sin exceder el 100 %.','10 % por mes o fracción, sin exceder el 200 % del impuesto.','20 % del valor de los ingresos brutos.'],1,
+'Después del emplazamiento: 10 % por mes o fracción, máximo 200 % del impuesto o retención.','Art. 642 ET');
+P('sanc','La sanción por no declarar renta, cuando la DIAN tiene información sobre ingresos y consignaciones, equivale al:',
+['20 % del valor de las consignaciones bancarias o de los ingresos brutos, el que fuere superior.','100 % del impuesto que se hubiera liquidado.','5 % del patrimonio líquido.'],0,
+'La sanción por no declarar renta es del 20 % del mayor valor entre consignaciones e ingresos brutos.','Art. 643 ET');
+P('sanc','Un contribuyente corrige voluntariamente su declaración, antes de cualquier emplazamiento, aumentando el saldo a pagar. La sanción por corrección es:',
+['20 % del mayor valor a pagar.','10 % del mayor valor a pagar.','No hay sanción si corrige voluntariamente.'],1,
+'La sanción por corrección es del 10 % del mayor valor; del 20 % si se corrige después de notificado el emplazamiento para corregir o el auto de inspección.','Art. 644 ET');
+P('sanc','¿Cuál de las siguientes situaciones NO constituye inexactitud sancionable?',
+['Incluir costos de proveedores inexistentes.','Omitir ingresos gravados.','Una diferencia de criterio sobre la interpretación del derecho aplicable, cuando los hechos declarados son completos y verdaderos.'],2,
+'La diferencia de criterio no constituye inexactitud siempre que los hechos y cifras sean completos y verdaderos.','Art. 647 ET');
+P('sanc','Como regla general, la sanción por inexactitud equivale al:',
+['10 % de la diferencia.','50 % de la diferencia.','100 % de la diferencia entre el saldo a pagar determinado por la DIAN y el declarado.'],2,
+'La regla general es el 100 % de la diferencia; hay tarifas mayores en casos agravados (costos inexistentes, proveedores ficticios, etc.).','Art. 648 ET');
+P('sanc','Para imponer una sanción en resolución independiente (no dentro de una liquidación oficial), la DIAN debe:',
+['Notificar previamente un pliego de cargos y dar oportunidad de respuesta.','Imponerla de plano para garantizar celeridad.','Esperar a que el contribuyente corrija voluntariamente.'],0,
+'Las sanciones impuestas en resolución independiente exigen pliego de cargos previo, en garantía del debido proceso.','Arts. 637-638 ET');
+P('sanc','En una visita de control a un establecimiento comercial se comprueba que no expide factura. La sanción típica es:',
+['Multa del 100 % de las ventas del año.','Clausura del establecimiento, con imposición del sello "CERRADO POR EVASIÓN".','Cancelación del RUT.'],1,
+'La clausura del establecimiento (con el sello "cerrado por evasión") procede, entre otras causales, por no expedir factura.','Art. 657 ET');
+P('sanc','El principio sancionatorio según el cual la sanción debe corresponder a la gravedad de la falta y al daño causado se denomina:',
+['Proporcionalidad.','Favorabilidad.','Legalidad.'],0,
+'La proporcionalidad exige que la sanción sea adecuada a la gravedad de la conducta y al daño; la gradualidad permite reducirla según la conducta del infractor.','Art. 640 ET; Ley 1819 de 2016');
+P('sanc','Durante el proceso sancionatorio entra en vigencia una ley que establece una sanción menor para la misma conducta. En virtud del principio de favorabilidad:',
+['Se aplica la ley vigente cuando ocurrió la conducta, sin excepción.','Se aplica la norma más favorable al infractor, aunque sea posterior.','Se aplica el promedio de ambas sanciones.'],1,
+'El principio de favorabilidad permite aplicar la ley permisiva o favorable aun cuando sea posterior a la conducta.','Art. 640 ET; art. 29 C.P.');
+P('sanc','Un contribuyente soporta sus costos con facturas de una sociedad declarada por la DIAN como proveedor ficticio. Esos costos:',
+['Son aceptados si el pago se hizo por medios bancarios.','No son reconocidos fiscalmente.','Son aceptados en un 50 %.'],1,
+'No son deducibles los costos y deducciones soportados en operaciones con proveedores ficticios, y hay sanción agravada.','Art. 671 ET');
+
+// ===================== SISTEMA TRIBUTARIO =====================
+P('sist','¿Cuáles son los elementos esenciales del tributo que debe fijar directamente la ley, ordenanza o acuerdo?',
+['Sujeto activo, sujeto pasivo, hecho generador, base gravable y tarifa.','Plazo, formulario, sanción y lugar de pago.','Hecho generador, sanción y procedimiento de cobro.'],0,
+'El art. 338 de la Constitución exige que la norma fije sujetos activos y pasivos, hechos y bases gravables y tarifas.','Art. 338 C.P.');
+P('sist','¿Cuál de estos tributos NO es administrado por la DIAN?',
+['Impuesto sobre las ventas (IVA).','Gravamen a los movimientos financieros (GMF).','Impuesto de industria y comercio (ICA).'],2,
+'El ICA es un impuesto municipal administrado por los municipios y distritos.','Normativa tributaria');
+P('sist','Según el Estatuto Tributario, el IVA se causa sobre:',
+['La venta de bienes, la prestación de servicios, la importación de bienes y la circulación, venta u operación de juegos de suerte y azar.','Únicamente la venta de bienes muebles.','La renta líquida de las personas jurídicas.'],0,
+'Son hechos generadores del IVA: ventas, servicios, importaciones y juegos de suerte y azar (salvo loterías y juegos de suerte y azar operados exclusivamente por internet en ciertos casos).','Art. 420 ET');
+P('sist','La tarifa general del IVA vigente es:',['16 %.','19 %.','21 %.'],1,'La tarifa general del IVA es del 19 %.','Art. 468 ET');
+P('sist','La diferencia práctica entre bienes exentos y excluidos de IVA es que:',
+['Los exentos están gravados a tarifa cero y otorgan derecho a impuestos descontables y devolución; los excluidos no causan IVA.','Los excluidos dan derecho a devolución y los exentos no.','No existe diferencia; son sinónimos.'],0,
+'Los productores de bienes exentos son responsables, pueden descontar el IVA pagado y pedir devolución; los excluidos no causan el impuesto.','Arts. 424 y 477 ET');
+P('sist','La retención en la fuente tiene por objeto:',
+['Sancionar a los contribuyentes morosos.','Conseguir en forma gradual que el impuesto se recaude en lo posible dentro del mismo ejercicio gravable en que se cause.','Reemplazar la obligación de declarar.'],1,
+'La retención en la fuente es un mecanismo de recaudo anticipado.','Art. 367 ET');
+P('sist','Un ciudadano extranjero permaneció en Colombia 200 días continuos dentro de un periodo de 365 días. Para efectos tributarios es:',
+['Residente fiscal, porque superó 183 días calendario.','No residente, porque no tiene nacionalidad colombiana.','Residente, solo si tiene cuenta bancaria en Colombia.'],0,
+'Es residente quien permanece más de 183 días calendario, continuos o discontinuos, en un periodo de 365 días.','Art. 10 ET');
+P('sist','El Registro Único Tributario (RUT) es:',
+['El mecanismo único para identificar, ubicar y clasificar a los sujetos de obligaciones administradas y controladas por la DIAN.','Un registro voluntario para quienes desean facturar.','El registro de deudores morosos del Estado.'],0,
+'Así lo define el art. 555-2 ET.','Art. 555-2 ET');
+P('sist','La obligación de presentar declaraciones, inscribirse en el RUT y expedir factura corresponde a:',
+['Obligaciones sustanciales.','Obligaciones formales.','Obligaciones aduaneras.'],1,
+'La obligación sustancial es pagar el tributo; los deberes de declarar, informar, facturar o inscribirse son obligaciones formales.','Art. 1 ET y ss.');
+P('sist','El sistema tributario colombiano, según la Constitución, se funda en los principios de:',
+['Legalidad, solidaridad y universalidad.','Equidad, eficiencia y progresividad.','Celeridad, eficacia y economía.'],1,
+'Art. 363 C.P.: equidad, eficiencia y progresividad; además, las leyes tributarias no se aplican con retroactividad.','Art. 363 C.P.');
+P('sist','Los tributos aduaneros que se liquidan en una importación ordinaria comprenden principalmente:',
+['El gravamen arancelario y el IVA a las importaciones.','El impuesto de renta y el ICA.','El GMF y el impuesto de timbre.'],0,
+'Los tributos aduaneros comprenden los derechos de aduana (arancel) y el IVA a la importación, entre otros.','Decreto 1165 de 2019');
+// ===================== FISCALIZACIÓN ADUANERA =====================
+P('adua','En una acción de control posterior, usted verifica una declaración de importación cuyas mercancías ya obtuvieron levante. Este tipo de control se denomina:',
+['Control previo.','Control simultáneo.','Control posterior.'],2,
+'El control posterior se ejerce después del levante, mediante fiscalización. El simultáneo ocurre durante el desaduanamiento (inspección).','Decreto 1165 de 2019');
+P('adua','El acto mediante el cual la autoridad aduanera permite a los interesados la disposición de la mercancía, una vez cumplidos los requisitos, se denomina:',
+['Aprehensión.','Levante.','Decomiso.'],1,'El levante autoriza la disposición de la mercancía.','Decreto 1165 de 2019, art. 3');
+P('adua','En un operativo encuentra mercancía extranjera en un almacén sin documentos que acrediten su legal introducción. La medida cautelar que procede es:',
+['La aprehensión de la mercancía, levantando el acta correspondiente.','El decomiso inmediato de plano, sin acta.','La destrucción inmediata de la mercancía.'],0,
+'La aprehensión es la medida cautelar que retiene mercancías sobre las cuales se configura una causal de decomiso; luego se adelanta el proceso de decomiso con garantía de defensa.','Régimen de decomiso de mercancías');
+P('adua','La decisión que, previo procedimiento, transfiere a la Nación la propiedad de la mercancía cuya legal introducción no se acreditó se denomina:',
+['Abandono voluntario.','Decomiso.','Rescate.'],1,'El decomiso es la decisión de fondo que pasa la mercancía a propiedad de la Nación.','Régimen de decomiso de mercancías');
+P('adua','Un importador introduce mercancías por un lugar no habilitado y nunca las presenta ante la aduana. Esta conducta se conoce como:',
+['Contrabando abierto.','Contrabando técnico.','Subvaloración simple.'],0,
+'Contrabando abierto: ingreso o salida sin presentar la mercancía a la aduana o por lugares no habilitados. El técnico implica presentar la mercancía pero con irregularidades.','Art. 319 C.P.; Ley 1762 de 2015');
+P('adua','Un importador presenta la mercancía ante la aduana pero declara un valor muy inferior al real para pagar menos tributos. Esta práctica corresponde a:',
+['Contrabando abierto.','Contrabando técnico (fraude aduanero por subfacturación).','Una operación de tránsito aduanero.'],1,
+'La subfacturación, la falsa clasificación o el falso origen en una mercancía presentada son modalidades de contrabando técnico/fraude aduanero.','Art. 321 C.P.; Ley 1762 de 2015');
+P('adua','Según el Código Penal (Ley 1762 de 2015), el contrabando es delito cuando el valor de la mercancía:',
+['Supera 50 salarios mínimos legales mensuales vigentes.','Supera 10 SMMLV.','Supera cualquier valor, pues todo contrabando es delito.'],0,
+'Por encima de 50 SMMLV es delito (art. 319 C.P.); por debajo es una infracción administrativa aduanera que da lugar al decomiso.','Art. 319 C.P.');
+P('adua','Para determinar la base gravable de una importación, el primer método de valoración que debe aplicarse es:',
+['El método deductivo.','El método del valor de transacción de las mercancías importadas.','El método del último recurso.'],1,
+'Según el Acuerdo de Valoración de la OMC y la Decisión 571 de la CAN, el primer método es el valor de transacción; los demás se aplican en orden sucesivo.','Acuerdo de Valoración OMC; Decisión CAN 571');
+P('adua','Para clasificar arancelariamente una mercancía, la primera regla que se aplica es:',
+['Clasificar por el material que predomine en peso.','La Regla General Interpretativa 1: la clasificación está determinada por los textos de las partidas y de las notas de sección o capítulo.','Clasificar en la partida con el arancel más bajo.'],1,
+'La RGI 1 del Sistema Armonizado establece que los títulos son indicativos y la clasificación se determina legalmente por los textos de partidas y notas.','Arancel de Aduanas – Sistema Armonizado');
+P('adua','El régimen que permite transportar mercancías bajo control aduanero de una aduana a otra dentro del territorio, con suspensión de tributos, es:',
+['La importación temporal.','El tránsito aduanero.','La exportación temporal.'],1,'El tránsito aduanero permite el transporte bajo control aduanero con suspensión de tributos.','Decreto 1165 de 2019');
+P('adua','Como regla general, la declaración aduanera queda en firme:',
+['Al momento del levante.','Transcurridos tres años contados a partir de su aceptación, salvo que se haya notificado requerimiento especial aduanero.','Transcurridos diez años desde la importación.'],1,
+'La firmeza de la declaración aduanera es de 3 años desde su aceptación, salvo notificación de requerimiento especial aduanero.','Decreto 1165 de 2019');
+P('adua','En un proceso de fiscalización aduanera para formular una liquidación oficial o proponer una sanción, el acto previo mediante el cual la DIAN propone los cargos es:',
+['El requerimiento especial aduanero.','El emplazamiento para declarar.','La resolución de aprehensión.'],0,
+'El requerimiento especial aduanero es el acto de trámite previo para proponer liquidaciones oficiales o sanciones aduaneras.','Régimen aduanero');
+P('adua','Un importador solicita la destrucción de mercancía averiada que llegó defectuosa. Usted es designado para participar en la diligencia (función 9 del empleo). Lo correcto es:',
+['Verificar la identidad y cantidad de la mercancía, presenciar la destrucción en las condiciones autorizadas y suscribir el acta correspondiente.','Autorizar al importador a destruirla sin presencia de la DIAN para ahorrar tiempo.','Llevarse muestras de la mercancía para uso personal.'],0,
+'La participación en destrucciones exige verificar que la mercancía corresponda a la autorizada, presenciar el procedimiento y documentarlo en acta.','Función esencial 9 – Ficha AT-FL-3007');
+P('adua','La Ley 1609 de 2013 es:',
+['La ley marco de aduanas, que contiene las normas generales a las que debe sujetarse el Gobierno para modificar los aranceles y el régimen de aduanas.','La ley anticontrabando.','El régimen sancionatorio cambiario.'],0,
+'La Ley 1609 de 2013 es la ley marco de aduanas. La ley anticontrabando es la 1762 de 2015.','Ley 1609 de 2013');
+P('adua','La Corte Constitucional, mediante la Sentencia C-072 de 2025, decidió respecto del Decreto Ley 920 de 2023 (régimen sancionatorio aduanero):',
+['Declararlo exequible sin condiciones.','Declararlo inexequible, difiriendo sus efectos hasta el 20 de junio de 2026 para que el Congreso expidiera una ley.','Declararlo inexequible con efectos inmediatos.'],1,
+'La Corte declaró inexequible el art. 68 de la Ley 2277 de 2022 y, por consecuencia, el DL 920 de 2023, con efectos diferidos al 20 de junio de 2026.','Sentencia C-072 de 2025');
+P('adua','La principal norma vigente que reglamenta el régimen de aduanas en Colombia (regímenes, declarantes, control) es:',
+['El Decreto 1165 de 2019.','El Decreto 2685 de 1999, sin modificaciones.','La Ley 9 de 1991.'],0,
+'El Decreto 1165 de 2019 reemplazó en su mayoría al Decreto 2685 de 1999. La Ley 9 de 1991 es la ley marco cambiaria.','Decreto 1165 de 2019');
+P('adua','Un comerciante tiene en su bodega mercancía de contrabando, sabiendo su origen, con valor superior a 50 SMMLV, aunque él no la importó. Penalmente esta conducta puede configurar:',
+['Favorecimiento y facilitación del contrabando.','Ninguna conducta, porque no la introdujo al país.','Omisión del agente retenedor.'],0,
+'Quien posea, tenga, transporte, almacene o enajene mercancía introducida de contrabando incurre en favorecimiento (art. 320 C.P.).','Art. 320 C.P.');
+P('adua','El Operador Económico Autorizado (OEA) es:',
+['Un funcionario de la DIAN encargado de inspecciones.','Un usuario de la cadena de suministro que, al cumplir requisitos de seguridad y confiabilidad, obtiene beneficios y facilidades en los controles.','Un agente de aduanas obligatorio para toda importación.'],1,
+'El OEA es una figura de la OMA para operadores confiables con beneficios en el control aduanero.','Decreto 3568 de 2011');
+P('adua','Durante una inspección física, el importador le ofrece "agilizar" el levante con un pago en efectivo. Usted debe:',
+['Aceptar si el valor es bajo y no altera el resultado.','Rechazar el ofrecimiento, dejar constancia e informar por los canales institucionales.','Ignorar el comentario y continuar sin dejar registro.'],1,
+'El ofrecimiento constituye un hecho que debe rechazarse y reportarse; aceptarlo constituiría cohecho.','Código de Integridad; art. 405-407 C.P.');
+P('adua','Al planificar la logística de una acción de control (función 7) en zona de frontera con alto riesgo de contrabando, lo más adecuado es:',
+['Definir objetivos, recursos, personal, apoyo de la Policía Fiscal y Aduanera (POLFA) y cronograma según los lineamientos institucionales.','Ir solo y sin informar a nadie para no alertar a los infractores.','Esperar a que el contribuyente acepte la visita para programarla.'],0,
+'Planificar la logística implica prever recursos, apoyo de la POLFA, seguridad y resultados esperados conforme a lineamientos.','Función esencial 7 – Ficha AT-FL-3007');
+
+// ===================== RÉGIMEN CAMBIARIO =====================
+P('camb','La autoridad cambiaria que expide la regulación de las operaciones de cambio en Colombia es:',
+['La DIAN.','La Junta Directiva del Banco de la República.','La Superintendencia Financiera.'],1,
+'La Junta Directiva del Banco de la República es la autoridad cambiaria (Ley 9 de 1991 y Ley 31 de 1992). La DIAN es entidad de control y vigilancia.','Ley 9 de 1991; Ley 31 de 1992');
+P('camb','La DIAN ejerce control y vigilancia cambiaria, entre otras, sobre:',
+['Las operaciones de importación y exportación de bienes y servicios, sus gastos asociados, su financiación y la sub o sobrefacturación.','La inversión extranjera en sociedades vigiladas por Supersociedades exclusivamente.','La política monetaria y la tasa de cambio.'],0,
+'Esa es la competencia cambiaria de la DIAN; la Supersociedades vigila inversiones internacionales y endeudamiento externo de sus vigiladas.','Decreto 1074 de 1999; DL 2245 de 2011');
+P('camb','¿Cuál de las siguientes operaciones es de canalización OBLIGATORIA a través del mercado cambiario?',
+['El pago de una importación de bienes.','El pago de servicios de consultoría prestados por un no residente.','Una donación de un familiar en el exterior.'],0,
+'Son de canalización obligatoria: importaciones y exportaciones de bienes, endeudamiento externo, inversiones internacionales, avales y garantías, y derivados. Servicios y transferencias son de mercado libre.','Ley 9 de 1991; Res. Externa 1 de 2018 BR');
+P('camb','El pago al exterior por servicios técnicos prestados por una empresa extranjera es una operación:',
+['De canalización obligatoria.','De mercado libre, que puede canalizarse voluntariamente.','Prohibida por el régimen cambiario.'],1,
+'Los servicios no son operaciones obligatoriamente canalizables; pueden canalizarse en forma voluntaria.','Res. Externa 1 de 2018 BR');
+P('camb','La canalización de operaciones de cambio obligatorias se hace a través de:',
+['Cualquier casa de cambio o persona natural.','Los intermediarios del mercado cambiario (IMC) o las cuentas de compensación registradas ante el Banco de la República.','La DIAN, mediante formulario.'],1,
+'Las divisas de operaciones obligatorias se canalizan por IMC o por cuentas de compensación.','Res. Externa 1 de 2018 BR');
+P('camb','El régimen sancionatorio y el procedimiento administrativo cambiario a cargo de la DIAN se encuentran en:',
+['El Decreto Ley 2245 de 2011.','El CPACA, capítulo sancionatorio, exclusivamente.','La Ley 1762 de 2015.'],0,
+'El DL 2245 de 2011 es la norma especial; el CPACA aplica solo en lo no regulado.','DL 2245 de 2011');
+P('camb','Según la doctrina DIAN sobre el art. 5 del Decreto Ley 2245 de 2011, el acto de formulación de cargos por infracción cambiaria debe notificarse dentro de:',
+['Los tres años siguientes a los hechos, conforme al art. 52 del CPACA.','Los cinco años siguientes a la ocurrencia de los hechos constitutivos de infracción.','Los diez años siguientes a los hechos.'],1,
+'La DIAN ha señalado que el término es de 5 años, y que esta norma especial prevalece sobre el art. 52 del CPACA.','Art. 5 DL 2245 de 2011; Oficio DIAN 8644 de 2025');
+P('camb','En materia cambiaria, el incumplimiento de plazos o términos legales señalados por el régimen cambiario:',
+['Se considera infracción continuada.','No se considera infracción continuada.','No es sancionable.'],1,
+'El art. 5 del DL 2245 de 2011 precisa que el incumplimiento de plazos no se considera infracción continuada.','Art. 5 DL 2245 de 2011');
+P('camb','Un usuario cometió un error en la información de una operación de cambio que el régimen cambiario permite corregir en cualquier tiempo. En este caso:',
+['Hay infracción cambiaria con multa del 100 %.','No hay infracción cambiaria.','Hay infracción, pero se reduce a la mitad.'],1,
+'No hay infracción cuando se trate de errores cuya aclaración, modificación o actualización sea permitida en cualquier tiempo por el régimen cambiario.','DL 2245 de 2011');
+P('camb','La ley marco que establece las normas generales a las que debe sujetarse el Gobierno para regular los cambios internacionales es:',
+['La Ley 9 de 1991.','La Ley 1609 de 2013.','La Ley 2277 de 2022.'],0,'La Ley 9 de 1991 es la ley marco cambiaria.','Ley 9 de 1991');
+P('camb','Una persona residente abre una cuenta en un banco del exterior para canalizar pagos de exportaciones. Para que sirva como mecanismo de canalización debe:',
+['Registrarla como cuenta de compensación ante el Banco de la República y cumplir los deberes de información.','Informarla únicamente en su declaración de renta.','No requiere ningún trámite.'],0,
+'Las cuentas en el exterior que canalizan operaciones obligatorias deben registrarse como cuentas de compensación y reportar sus movimientos.','Res. Externa 1 de 2018 BR');
+P('camb','Analizando operaciones de una exportadora, detecta que los reintegros de divisas superan ampliamente el valor de las mercancías exportadas. Esta señal puede indicar:',
+['Una operación normal sin riesgo.','Sobrefacturación de exportaciones, posible mecanismo de lavado de activos o de ingreso irregular de divisas, que amerita investigación.','Un error del banco que no compete a la DIAN.'],1,
+'La sobrefacturación de exportaciones es una tipología de lavado basado en comercio y es competencia cambiaria de la DIAN.','DL 2245 de 2011; tipologías UIAF');
+P('camb','La inversión extranjera directa en Colombia debe:',
+['Registrarse ante el Banco de la República, conforme al régimen general de inversiones internacionales.','Registrarse solo ante la DIAN.','Ser autorizada previamente por el Congreso.'],0,
+'El régimen de inversiones internacionales (Decreto 119 de 2017, compilado en el Decreto 1068 de 2015) exige el registro ante el Banco de la República.','Decreto 119 de 2017');
+
+// ===================== FISCALIZACIÓN INTERNACIONAL =====================
+P('intl','El principio según el cual las operaciones entre vinculados deben pactarse en las mismas condiciones que entre partes independientes se denomina:',
+['Principio de territorialidad.','Principio de plena competencia (arm\'s length).','Principio de renta mundial.'],1,'Es el fundamento del régimen de precios de transferencia.','Art. 260-2 ET');
+P('intl','Están obligados a presentar la declaración informativa de precios de transferencia los contribuyentes con operaciones con vinculados cuyo patrimonio bruto o ingresos brutos sean iguales o superiores a:',
+['Patrimonio bruto 100.000 UVT o ingresos brutos 61.000 UVT.','Patrimonio bruto 10.000 UVT o ingresos 5.000 UVT.','Cualquier valor.'],0,
+'Esos son los topes de los arts. 260-5 y 260-9 ET. Las operaciones con jurisdicciones no cooperantes quedan sujetas sin importar topes.','Arts. 260-5 y 260-9 ET');
+P('intl','¿Cuál de los siguientes NO es un método de precios de transferencia del Estatuto Tributario?',
+['Precio comparable no controlado.','Costo adicionado.','Método del valor en aduana deductivo.'],2,
+'Los métodos del ET son: precio comparable no controlado, precio de reventa, costo adicionado, partición de utilidades y márgenes transaccionales.','Art. 260-3 ET');
+P('intl','Una sociedad colombiana realiza compras a una empresa ubicada en una jurisdicción no cooperante de baja o nula imposición con la que NO tiene vinculación. Estas operaciones:',
+['Están por fuera del régimen de precios de transferencia.','Se someten al régimen de precios de transferencia aunque no exista vinculación.','Están prohibidas.'],1,
+'Las operaciones con jurisdicciones no cooperantes, de baja o nula imposición o regímenes preferenciales se someten al régimen.','Art. 260-7 ET');
+P('intl','Una empresa extranjera tiene en Colombia una oficina permanente desde la cual vende y presta servicios. Para efectos tributarios, esto puede configurar:',
+['Un establecimiento permanente, cuyas rentas atribuibles tributan en Colombia.','Una operación de tránsito aduanero.','Una inversión de portafolio.'],0,
+'El establecimiento permanente es un lugar fijo de negocios por medio del cual una empresa extranjera realiza su actividad en el país.','Art. 20-1 ET');
+P('intl','Una sociedad constituida en el exterior cuya sede efectiva de administración está en Colombia es considerada:',
+['Sociedad extranjera sin obligaciones en Colombia.','Sociedad nacional para efectos tributarios.','Establecimiento permanente.'],1,'Por la sede efectiva de administración se considera nacional.','Art. 12-1 ET');
+P('intl','El régimen de Entidades Controladas del Exterior (ECE) busca:',
+['Gravar en Colombia, en cabeza del residente controlante, las rentas pasivas obtenidas por la entidad del exterior, sin esperar la distribución de dividendos.','Eximir de impuestos a las inversiones colombianas en el exterior.','Controlar el ingreso de divisas.'],0,
+'El régimen ECE evita el diferimiento de rentas pasivas en sociedades del exterior controladas por residentes.','Arts. 882 y ss. ET');
+P('intl','Para obtener información financiera de un contribuyente colombiano en una cuenta bancaria de otro país, la DIAN puede apoyarse en:',
+['Los instrumentos de intercambio de información, como la Convención Multilateral de Asistencia Administrativa Mutua y el estándar CRS.','La solicitud directa al banco extranjero por correo electrónico personal.','Únicamente la declaración voluntaria del contribuyente.'],0,
+'Colombia aprobó la Convención Multilateral (Ley 1661 de 2013) y aplica CRS y FATCA.','Ley 1661 de 2013');
+P('intl','Un residente colombiano pagó impuesto de renta en otro país por rentas obtenidas allá. Para evitar la doble imposición puede, en general:',
+['Solicitar el descuento tributario por impuestos pagados en el exterior.','Excluir todas sus rentas extranjeras de la declaración.','Pedir devolución del impuesto pagado en el exterior a la DIAN.'],0,
+'El art. 254 ET permite el descuento por impuestos pagados en el exterior, sin perjuicio de los convenios para evitar la doble imposición.','Art. 254 ET');
+P('intl','El Registro Único de Beneficiarios Finales (RUB) tiene como finalidad:',
+['Identificar a las personas naturales que en último término poseen o controlan a las personas jurídicas y estructuras sin personería.','Registrar a los beneficiarios de subsidios del Estado.','Inscribir a los proveedores del Estado.'],0,
+'El RUB fue creado por la Ley 2155 de 2021 y reglamentado por la Resolución DIAN 164 de 2021.','Ley 2155 de 2021');
+P('intl','Para los empleos de nivel profesional ubicados en la Subdirección de Gestión de Fiscalización Internacional, la ficha AT-FL-3007 exige como requisito adicional:',
+['Especialización en derecho internacional.','Certificado de inglés en nivel B2.','Dos años de experiencia en comercio exterior.'],1,
+'Así lo establece la ficha en "Otros requisitos del empleo".','Ficha AT-FL-3007');
+
+// ===================== EVASIÓN, ELUSIÓN, CONTRABANDO, LA/FT =====================
+P('evas','Un contribuyente oculta ingresos llevando una doble contabilidad. Esta conducta es:',
+['Elusión.','Evasión.','Planeación tributaria.'],1,'La evasión es la reducción ilegal del tributo mediante ocultamiento o falsedad.','Conceptos evasión/elusión');
+P('evas','Una empresa aprovecha un vacío de la ley, sin violarla formalmente, para reducir su carga tributaria. Esta conducta se conoce como:',
+['Evasión.','Elusión.','Contrabando técnico.'],1,'La elusión utiliza formas o vacíos legales para reducir el tributo; si es artificiosa puede configurar abuso (art. 869 ET).','Conceptos evasión/elusión');
+P('evas','El agente retenedor que no consigna las sumas retenidas dentro de los dos meses siguientes a la fecha fijada por el Gobierno incurre en:',
+['Omisión del agente retenedor o recaudador (delito).','Una simple irregularidad formal.','Contrabando.'],0,'Art. 402 del Código Penal.','Art. 402 C.P.');
+P('evas','Las etapas del lavado de activos, en su orden lógico, son:',
+['Integración, colocación y estratificación.','Colocación, estratificación (ocultamiento) e integración.','Estratificación, integración y colocación.'],1,
+'Primero se introducen los recursos ilícitos (colocación), luego se ocultan con múltiples transacciones (estratificación) y finalmente se integran a la economía legal.','Tipologías LA/FT');
+P('evas','La entidad que recibe y analiza los Reportes de Operaciones Sospechosas (ROS) en Colombia es:',
+['La Fiscalía General de la Nación.','La Unidad de Información y Análisis Financiero (UIAF).','La Superintendencia de Sociedades.'],1,'La UIAF fue creada por la Ley 526 de 1999.','Ley 526 de 1999');
+P('evas','En una investigación aduanera detecta operaciones que pueden estar relacionadas con lavado de activos. Respecto del Reporte de Operación Sospechosa (ROS):',
+['Solo debe reportarse cuando exista certeza del delito.','No requiere certeza del delito; se reporta conforme al procedimiento interno y se guarda reserva frente al investigado.','Debe informarse previamente al investigado para garantizar su defensa.'],1,
+'El ROS no es denuncia penal, no requiere certeza y es reservado; no se puede informar al reportado.','Función esencial 3; Ley 526 de 1999');
+P('evas','Una importadora declara a precios muy superiores al mercado mercancía comprada a un proveedor relacionado, y paga al exterior grandes sumas. Esta es una tipología de:',
+['Lavado basado en comercio (sobrefacturación de importaciones).','Contrabando abierto.','Elusión legítima.'],0,
+'La sobrefacturación de importaciones permite sacar divisas del país; es una tipología común de lavado basado en comercio.','Tipologías UIAF/GAFI');
+P('evas','La Ley 2195 de 2022 se relaciona principalmente con:',
+['Medidas en materia de transparencia, prevención y lucha contra la corrupción.','El régimen de aduanas.','El impuesto de renta de personas naturales.'],0,
+'La Ley 2195 de 2022 adoptó medidas de transparencia y lucha anticorrupción, incluidos programas de transparencia y ética empresarial.','Ley 2195 de 2022');
+P('evas','La financiación del terrorismo se diferencia del lavado de activos en que:',
+['Los recursos pueden tener origen lícito, pero su destino es financiar actividades terroristas.','Solo involucra dinero en efectivo.','No está tipificada como delito en Colombia.'],0,
+'En la FT lo relevante es el destino de los recursos; en el lavado, su origen ilícito.','Art. 345 C.P.');
+P('evas','Una persona presta su nombre para figurar como propietaria de bienes adquiridos con recursos ilícitos de un tercero. Esta conducta se conoce como:',
+['Testaferrato.','Elusión.','Contrabando técnico.'],0,'El testaferrato está tipificado en el art. 326 C.P.','Art. 326 C.P.');
+// ===================== CPACA Y DERECHO DE PETICIÓN =====================
+P('cpaca','En un procedimiento de fiscalización tributaria surge un vacío no regulado en el Estatuto Tributario. Según el art. 2 del CPACA:',
+['Se aplica el CPACA en lo no previsto por el procedimiento especial.','Se suspende la actuación hasta que el Congreso legisle.','Se aplica el Código General del Proceso de forma preferente.'],0,
+'Los procedimientos especiales (como el tributario) prevalecen, y en lo no previsto se aplica el CPACA.','Art. 2 CPACA');
+P('cpaca','El principio en virtud del cual las autoridades buscarán que los procedimientos logren su finalidad, removiendo obstáculos puramente formales y saneando irregularidades, es el de:',
+['Eficacia.','Publicidad.','Imparcialidad.'],0,'Así define el art. 3 numeral 11 del CPACA el principio de eficacia.','Art. 3 CPACA');
+P('cpaca','El principio de celeridad implica que las autoridades:',
+['Impulsen oficiosamente los procedimientos, sin dilaciones injustificadas.','Actúen solo a petición de parte.','Den a conocer sus decisiones mediante publicaciones.'],0,'Celeridad: impulso oficioso y uso de tecnologías para agilizar.','Art. 3 num. 13 CPACA');
+P('cpaca','Un ciudadano radica un derecho de petición de interés general ante la DIAN. Salvo norma especial, el término para resolverlo es:',
+['10 días.','15 días.','30 días.'],1,'Regla general: 15 días siguientes a la recepción.','Art. 14 Ley 1437 (sust. Ley 1755 de 2015)');
+P('cpaca','Un contribuyente solicita copia de documentos que reposan en la entidad y que no tienen reserva. El término para responder es:',
+['10 días; si no se responde, se entiende aceptada y deben entregarse dentro de los 3 días siguientes.','30 días.','15 días; si no se responde, se entiende negada.'],0,
+'Las peticiones de documentos e información se resuelven en 10 días; vencidos, se entiende aceptada la solicitud.','Art. 14 num. 1 Ley 1755 de 2015');
+P('cpaca','Un ciudadano eleva una consulta sobre la interpretación de una norma. El plazo para responder es de:',['15 días.','10 días.','30 días.'],2,'Las consultas a las autoridades se resuelven en 30 días.','Art. 14 num. 2 Ley 1755 de 2015');
+P('cpaca','Usted no puede responder una petición dentro del término por su complejidad. Debe:',
+['Responder cuando pueda, sin avisar.','Informar al peticionario antes del vencimiento, explicando los motivos y el plazo razonable de respuesta, que no podrá exceder el doble del inicialmente previsto.','Archivar la petición por complejidad.'],1,
+'Así lo ordena el parágrafo del art. 14.','Art. 14 parágrafo Ley 1755 de 2015');
+P('cpaca','Recibe una petición incompleta que no permite adelantar la actuación. Lo procedente es:',
+['Rechazarla de plano.','Requerir al peticionario dentro de los 10 días siguientes para que la complete en el término máximo de un mes.','Resolverla con la información disponible.'],1,
+'Si el peticionario no completa en ese plazo (ni pide prórroga), se entiende que desistió (desistimiento tácito).','Art. 17 Ley 1755 de 2015');
+P('cpaca','Le llega una petición sobre un asunto que es competencia de la Superintendencia de Sociedades. Usted debe:',
+['Devolverla al peticionario.','Remitirla a la autoridad competente dentro de los 5 días siguientes a su recepción e informar al peticionario.','Responderla de fondo aunque no sea su competencia.'],1,'Así lo dispone el art. 21.','Art. 21 Ley 1755 de 2015');
+P('cpaca','Las peticiones entre autoridades deben resolverse en un término no mayor a:',['5 días.','10 días.','15 días.'],1,'Art. 30 de la Ley 1755 de 2015.','Art. 30 Ley 1755 de 2015');
+P('cpaca','Para notificar personalmente un acto administrativo cuando no hay otro medio más eficaz, se envía una citación. Si el interesado no comparece dentro de los 5 días siguientes al envío de la citación:',
+['Se notifica por aviso.','Se entiende notificado automáticamente.','Se archiva la actuación.'],0,'Procede la notificación por aviso (art. 69).','Arts. 68-69 CPACA');
+P('cpaca','La notificación por aviso enviada por correo se considera surtida:',
+['El mismo día del envío.','Al finalizar el día siguiente al de la entrega del aviso en el lugar de destino.','Cinco días después del envío.'],1,'Así lo establece el art. 69 del CPACA.','Art. 69 CPACA');
+P('cpaca','Un acto fue notificado de manera irregular, pero el interesado interpone el recurso dentro del término legal. Se entiende:',
+['Que el acto nunca produjo efectos.','Que se dio por notificado por conducta concluyente, quedando saneada la irregularidad.','Que debe repetirse toda la actuación.'],1,
+'Sin notificación en legal forma el acto no produce efectos, salvo que el interesado revele conocerlo o use los recursos (conducta concluyente).','Art. 72 CPACA');
+P('cpaca','En el procedimiento administrativo general, el término para interponer los recursos de reposición y apelación es:',
+['Dentro de los 10 días siguientes a la notificación.','Dentro de los 2 meses siguientes.','Dentro de los 5 días siguientes.'],0,'Art. 76 CPACA (en materia tributaria rige el recurso de reconsideración, 2 meses).','Art. 76 CPACA');
+P('cpaca','El recurso que procede cuando se rechaza el de apelación es el de:',['Reposición.','Queja.','Revocatoria directa.'],1,'El recurso de queja procede contra la decisión que rechaza la apelación.','Art. 74 CPACA');
+P('cpaca','¿Cuál recurso NO es obligatorio para acudir a la jurisdicción contencioso administrativa?',
+['La apelación, cuando procede.','La reposición.','Ninguno; todos son obligatorios.'],1,'Los recursos de reposición y queja no son obligatorios.','Art. 76 CPACA');
+P('cpaca','Los recursos en el procedimiento administrativo general se conceden en el efecto:',['Devolutivo.','Suspensivo.','Diferido.'],1,'Art. 79 CPACA.','Art. 79 CPACA');
+P('cpaca','Transcurridos tres meses desde la presentación de una petición sin que se haya notificado decisión, se configura, como regla general:',
+['El silencio administrativo negativo.','El silencio administrativo positivo.','La pérdida de competencia de la autoridad.'],0,'Art. 83 CPACA. El silencio positivo solo opera cuando la ley lo prevé.','Arts. 83-84 CPACA');
+P('cpaca','Transcurridos dos meses desde la interposición de un recurso de reposición o apelación sin decisión notificada, se entiende que:',
+['La decisión es negativa.','La decisión es positiva.','El recurso caducó.'],0,'Silencio negativo en recursos (art. 86).','Art. 86 CPACA');
+P('cpaca','Un acto administrativo pierde su fuerza ejecutoria, entre otras causas, cuando:',
+['Al cabo de cinco años de estar en firme, la autoridad no ha realizado los actos para ejecutarlo.','El interesado manifiesta su desacuerdo.','Cambia el funcionario que lo expidió.'],0,'Es una de las causales del art. 91 del CPACA.','Art. 91 CPACA');
+P('cpaca','Un acto administrativo queda en firme, entre otros casos:',
+['Desde el día siguiente al vencimiento del término para interponer recursos si estos no fueron interpuestos.','Desde que se firma por el funcionario.','Desde que el interesado lo cumple voluntariamente.'],0,'Art. 87 numeral 3 del CPACA.','Art. 87 CPACA');
+P('cpaca','La manifestación de inconformidad de un ciudadano por la conducta de un servidor público durante la atención se denomina:',
+['Reclamo.','Queja.','Sugerencia.'],1,'Queja: sobre la conducta de servidores. Reclamo: sobre la prestación indebida de un servicio o la falta de atención de una solicitud.','Sistema PQRSF');
+P('cpaca','La autoridad debe garantizar atención personal al público, como mínimo, durante:',['30 horas a la semana.','40 horas a la semana.','48 horas a la semana.'],1,'Art. 7 num. 2 CPACA.','Art. 7 CPACA');
+P('cpaca','Las actuaciones administrativas pueden iniciarse:',
+['Solo de oficio.','Por quienes ejerzan el derecho de petición, por quienes obren en cumplimiento de una obligación o deber legal, o de oficio.','Solo a petición de parte.'],1,'Art. 4 CPACA.','Art. 4 CPACA');
+
+// ===================== CONSTITUCIÓN =====================
+P('const','Durante una visita, un contribuyente se niega a mostrar sus libros de contabilidad alegando su derecho a la intimidad. Según la Constitución:',
+['Tiene razón: los libros son documentos privados inviolables en todo caso.','Para efectos tributarios puede exigirse la presentación de libros de contabilidad y documentos privados, en los términos de la ley.','Solo un juez puede ordenar su exhibición.'],1,'Art. 15 inciso final C.P.','Art. 15 C.P.');
+P('const','En tiempo de paz, la facultad de imponer contribuciones fiscales corresponde:',
+['Solamente al Congreso, las asambleas departamentales y los concejos distritales y municipales.','Al Presidente mediante decreto ordinario.','A la DIAN mediante resolución.'],0,'Art. 338 C.P. (principio de legalidad tributaria).','Art. 338 C.P.');
+P('const','Una ley que modifica la base gravable del impuesto de renta (impuesto de periodo) se publica en marzo de 2026. Se aplicará:',
+['Desde marzo de 2026.','A partir del periodo que comience después de iniciar su vigencia, es decir, el año gravable 2027.','Retroactivamente a todo 2026.'],1,'Art. 338 C.P.: en los tributos de periodo, la norma rige desde el periodo siguiente.','Art. 338 C.P.');
+P('const','El deber constitucional de contribuir al financiamiento de los gastos e inversiones del Estado se encuentra en:',['El art. 95 numeral 9.','El art. 23.','El art. 86.'],0,'Art. 95-9: dentro de conceptos de justicia y equidad.','Art. 95 C.P.');
+P('const','Según el art. 6 de la Constitución, los servidores públicos son responsables:',
+['Solo por infringir la Constitución y las leyes.','Por infringir la Constitución y las leyes, y por omisión o extralimitación en el ejercicio de sus funciones.','Únicamente por omisión.'],1,'Art. 6 C.P.','Art. 6 C.P.');
+P('const','En un proceso, la DIAN obtuvo una prueba con violación del debido proceso. Según el art. 29 de la Constitución, esa prueba:',
+['Es válida si demuestra la evasión.','Es nula de pleno derecho.','Puede convalidarse con el visto bueno del superior.'],1,'Art. 29 C.P.','Art. 29 C.P.');
+P('const','La acción de tutela protege derechos fundamentales y el juez debe fallarla en un término máximo de:',['10 días.','15 días.','30 días.'],0,'Art. 86 C.P.','Art. 86 C.P.');
+P('const','¿Cuáles son los principios del sistema tributario según el art. 363 de la Constitución?',
+['Equidad, eficiencia y progresividad; y no retroactividad de las leyes tributarias.','Moralidad, eficacia y publicidad.','Igualdad, solidaridad y legalidad.'],0,'Art. 363 C.P.','Art. 363 C.P.');
+P('const','La función administrativa, según el art. 209 de la Constitución, se desarrolla con fundamento en los principios de:',
+['Igualdad, moralidad, eficacia, economía, celeridad, imparcialidad y publicidad.','Equidad, eficiencia y progresividad.','Legalidad y reserva tributaria.'],0,'Art. 209 C.P.','Art. 209 C.P.');
+P('const','La entidad responsable de la administración y vigilancia de las carreras de los servidores públicos, excepto las de carácter especial de origen constitucional, es:',
+['El Departamento Administrativo de la Función Pública.','La Comisión Nacional del Servicio Civil (CNSC).','La Procuraduría General de la Nación.'],1,'Art. 130 C.P.','Art. 130 C.P.');
+P('const','Según el art. 125 de la Constitución, el ingreso a los cargos de carrera y el ascenso se harán:',
+['Por libre nombramiento.','Previo cumplimiento de requisitos y condiciones para determinar los méritos y calidades de los aspirantes.','Por antigüedad en la entidad.'],1,'Art. 125 C.P.','Art. 125 C.P.');
+P('const','Corresponde al Presidente de la República velar por la estricta recaudación y administración de las rentas y caudales públicos, según:',['El art. 189 numeral 20.','El art. 150 numeral 12.','El art. 338.'],0,'Art. 189-20 C.P.','Art. 189 C.P.');
+P('const','Colombia se define en el art. 1 de la Constitución como:',
+['Un Estado federal.','Un Estado social de derecho, organizado en forma de República unitaria, descentralizada, con autonomía de sus entidades territoriales.','Un Estado confesional.'],1,'Art. 1 C.P.','Art. 1 C.P.');
+
+// ===================== GESTIÓN PÚBLICA, MIPG, DOCUMENTAL, INTEGRIDAD, SERVICIO =====================
+P('gest','La dimensión que el Modelo Integrado de Planeación y Gestión (MIPG) considera el "corazón" del modelo es:',
+['Control interno.','Talento humano.','Gestión del conocimiento.'],1,'MIPG ubica el talento humano en el centro del modelo.','Decreto 1499 de 2017');
+P('gest','¿Cuántas dimensiones operativas tiene MIPG?',['Cinco.','Siete.','Diez.'],1,'Talento humano; Direccionamiento estratégico y planeación; Gestión con valores para resultados; Evaluación de resultados; Información y comunicación; Gestión del conocimiento y la innovación; Control interno.','Decreto 1499 de 2017');
+P('gest','En el esquema de líneas de defensa del MIPG, la evaluación independiente corresponde a:',
+['La primera línea (líderes de proceso).','La segunda línea (planeación y supervisión).','La tercera línea (Oficina de Control Interno).'],2,'La 3.ª línea, a cargo de la OCI, hace la evaluación independiente.','MIPG – Dimensión 7');
+P('gest','Como gestor que ejecuta controles en su proceso diario de fiscalización, usted forma parte de:',['La línea estratégica.','La primera línea de defensa.','La tercera línea de defensa.'],1,'Los líderes y servidores que operan los procesos son la primera línea.','MIPG');
+P('gest','La herramienta con la que se mide anualmente el avance de MIPG en las entidades es:',['El FURAG.','El SECOP.','El SIGEP.'],0,'Formulario Único de Reporte de Avances de la Gestión.','MIPG');
+P('gest','Los valores del Código de Integridad del servicio público colombiano son:',
+['Honestidad, Respeto, Compromiso, Diligencia y Justicia.','Lealtad, Obediencia, Eficiencia, Puntualidad y Discreción.','Transparencia, Equidad, Solidaridad, Tolerancia y Paz.'],0,'Código de Integridad (Función Pública).','Código de Integridad');
+P('gest','La Ley General de Archivos en Colombia es:',['La Ley 594 de 2000.','La Ley 1712 de 2014.','La Ley 87 de 1993.'],0,'La Ley 594 de 2000 regula la gestión documental.','Ley 594 de 2000');
+P('gest','El instrumento archivístico que define, por series y subseries, los tiempos de permanencia de los documentos en cada etapa del ciclo vital y su disposición final es:',
+['El FUID.','La Tabla de Retención Documental (TRD).','El cuadro de mando integral.'],1,'La TRD fija tiempos de retención y disposición final.','Ley 594 de 2000; Decreto 1080 de 2015');
+P('gest','El ciclo vital del documento comprende, en su orden:',
+['Archivo histórico, central y de gestión.','Archivo de gestión, archivo central y archivo histórico.','Archivo central, de gestión y digital.'],1,'Ley 594 de 2000.','Ley 594 de 2000');
+P('gest','Al conformar un expediente de fiscalización, los documentos deben ordenarse respetando la secuencia en que se produjeron. Esto corresponde al principio de:',
+['Orden original.','Procedencia.','Máxima publicidad.'],0,'El principio de orden original exige conservar el orden en que se generaron los documentos.','Ley 594 de 2000');
+P('gest','Un periodista solicita copia de la declaración de renta de una empresa investigada. Usted debe:',
+['Entregarla, porque la información pública es de máxima publicidad.','Negarla, porque la información tributaria de las declaraciones tiene carácter reservado.','Entregarla solo si el periodista paga las copias.'],1,'Reserva tributaria del art. 583 ET; Ley 1712 de 2014 reconoce las excepciones legales.','Art. 583 ET; Ley 1712 de 2014');
+P('gest','Según la Ley 1712 de 2014, la reserva de la información pública reservada puede extenderse por un máximo de:',['5 años.','15 años.','30 años.'],1,'Art. 22 de la Ley 1712 de 2014.','Ley 1712 de 2014');
+P('gest','La información cuyo acceso puede negarse porque causaría daño a derechos de personas naturales o jurídicas (intimidad, secretos comerciales) se denomina:',
+['Información pública reservada.','Información pública clasificada.','Información de libre acceso.'],1,'Clasificada: protege derechos de personas. Reservada: protege intereses públicos.','Arts. 18-19 Ley 1712 de 2014');
+P('gest','La Ley 1474 de 2011 exige a las entidades elaborar anualmente:',
+['El Plan Anticorrupción y de Atención al Ciudadano.','El Plan de Desarrollo Nacional.','El presupuesto general de la Nación.'],0,'Art. 73 Ley 1474 de 2011.','Ley 1474 de 2011');
+P('gest','En la fila de atención llegan una mujer embarazada, un adulto mayor y un contribuyente con cita previa. Conforme a la atención preferencial:',
+['Debe atenderse en estricto orden de llegada sin excepciones.','Debe darse atención prioritaria a la mujer embarazada y al adulto mayor.','Debe atenderse primero a quien tiene cita.'],1,'Decreto 019 de 2012 (art. 13) y política de servicio al ciudadano.','Decreto 019 de 2012');
+P('gest','El sistema informático que soporta los servicios y procesos tributarios de la DIAN (RUT, declaraciones, devoluciones) se conoce como:',['MUISCA.','SECOP II.','SIIF Nación.'],0,'Modelo Único de Ingresos, Servicio y Control Automatizado.','DIAN');
+P('gest','Para elaborar un informe estadístico de gestión (función 8) que totalice por seccional el número de investigaciones abiertas a partir de una base de datos en Excel, la herramienta más adecuada es:',
+['Una tabla dinámica.','La función CONCATENAR.','El corrector ortográfico.'],0,'La tabla dinámica permite resumir y agrupar datos por categorías.','Herramientas informáticas');
+P('gest','En Excel, para traer el nombre de un contribuyente desde otra hoja buscando por su NIT en la primera columna de la tabla, se usa:',['BUSCARV (o BUSCARX).','SUMAR.SI.','CONTAR.BLANCO.'],0,'BUSCARV/BUSCARX buscan un valor y devuelven el dato correspondiente.','Herramientas informáticas');
+P('gest','La norma que establece la estructura actual de la DIAN es:',['El Decreto 1742 de 2020.','El Decreto 4048 de 2008 sin modificaciones.','La Ley 9 de 1991.'],0,'El Decreto 1742 de 2020 modificó la estructura de la DIAN.','Decreto 1742 de 2020');
+P('gest','El sistema específico de carrera administrativa de la DIAN está regulado por:',['El Decreto Ley 071 de 2020.','La Ley 909 de 2004 exclusivamente.','El Decreto 1083 de 2015 exclusivamente.'],0,'El DL 071 de 2020 regula el sistema específico de carrera de la DIAN.','Decreto Ley 071 de 2020');
+// ===================== INTEGRIDAD (casos) =====================
+P('integ','Al terminar una visita de fiscalización, el representante legal le ofrece una ancheta "como agradecimiento por su amabilidad". Lo correcto es:',
+['Aceptarla, porque la visita ya terminó y no influye en el resultado.','Rechazarla cortésmente, explicar que no puede recibir obsequios y dejar constancia del ofrecimiento.','Aceptarla y compartirla con el equipo para no ser descortés.'],1,
+'El servidor no recibe dádivas de usuarios, sin importar su valor ni el momento. Dejar constancia protege la actuación.','Código de Integridad; Ley 1952 de 2019');
+P('integ','Le asignan un expediente de un contribuyente que resulta ser la empresa de su cuñado. Usted debe:',
+['Adelantar el caso con especial rigor para demostrar imparcialidad.','Declararse impedido por escrito ante su superior para que el caso sea reasignado.','Tramitarlo sin decir nada, porque el parentesco por afinidad no cuenta.'],1,
+'El parentesco por afinidad dentro del segundo grado configura conflicto de intereses; el servidor debe declararse impedido.','Art. 11 CPACA; Ley 1952 de 2019');
+P('integ','Un amigo le pide que "revise en el sistema" si un vecino declara renta, porque tiene una disputa con él. Usted:',
+['Hace la consulta rápida sin compartir detalles.','Se niega, porque el acceso a la información tributaria solo procede para fines oficiales y está protegido por reserva.','Le dice que solo le confirmará si declara o no, sin dar cifras.'],1,
+'Consultar o revelar información tributaria sin un fin oficial vulnera la reserva (art. 583 ET) y puede ser falta disciplinaria.','Art. 583 ET');
+P('integ','Descubre que un compañero ha estado archivando sin justificación investigaciones de ciertos contribuyentes. Lo adecuado es:',
+['Hablar con él para que no lo vuelva a hacer y no reportarlo.','Informar los hechos por los canales formales (jefe inmediato, Control Disciplinario Interno o canal de denuncias).','Comentarlo con el resto del equipo para presionarlo.'],1,
+'El comportamiento ético nivel 4 implica denunciar irregularidades por los canales institucionales.','Comportamiento ético N4');
+P('integ','Su jefe le pide que modifique la fecha de un acta para que una actuación no quede vencida. Usted:',
+['La modifica, porque es una orden de un superior.','Se niega a alterar el documento, explica que sería una falsedad y propone buscar la solución legal (por ejemplo, documentar el vencimiento).','La modifica pero guarda una copia de la original por si acaso.'],1,
+'La obediencia no se extiende a órdenes ilegales. Alterar un documento público configura falsedad.','Art. 6 C.P.; Código Penal');
+P('integ','Cometió un error en una liquidación que perjudica al contribuyente y nadie lo ha notado. Usted:',
+['Lo deja así, porque el contribuyente puede recurrir.','Informa a su superior y promueve la corrección por los mecanismos legales.','Lo corrige en el sistema sin dejar rastro.'],1,
+'Reconocer y corregir los propios errores con transparencia es parte del comportamiento ético y la diligencia.','Código de Integridad – Honestidad');
+P('integ','Un contribuyente investigado le sugiere que podrían "llegar a un acuerdo" para reducir el valor propuesto. Usted:',
+['Escucha la propuesta para conocer el monto.','Rechaza de inmediato, deja constancia y reporta el hecho; el valor se determina únicamente conforme a la ley.','Le pide que lo hable con otro funcionario.'],1,
+'Cualquier insinuación de soborno debe rechazarse y reportarse.','Código de Integridad; art. 407 C.P.');
+P('integ','Usa el vehículo oficial asignado para una diligencia y, de regreso, le piden pasar por su casa a recoger un paquete personal. Usted:',
+['Lo hace, porque está en la ruta.','No utiliza el vehículo oficial para fines personales.','Lo hace si paga la gasolina.'],1,'Los bienes públicos solo se usan para fines del servicio.','Ley 1952 de 2019');
+P('integ','Un medio de comunicación lo contacta para que comente una investigación de alto perfil que usted maneja. Usted:',
+['Da declaraciones generales para aclarar la situación.','Remite la solicitud a la oficina de comunicaciones y no revela información reservada.','Comparte documentos de forma anónima para que la verdad se conozca.'],1,'La información de los procesos está sujeta a reserva y a los canales oficiales.','Art. 583 ET');
+P('integ','En redes sociales se publica una crítica a la DIAN con información falsa. Usted, como servidor:',
+['Responde desde su cuenta personal revelando datos del caso para desmentir.','No revela información reservada; puede informar a comunicaciones institucionales para que respondan por los canales oficiales.','Insulta al autor de la publicación.'],1,'Se protege la reserva y se actúa por canales oficiales, con respeto.','Código de Integridad – Respeto');
+
+// ===================== COMPETENCIAS COMPORTAMENTALES (casos) =====================
+P('comp','Un contribuyente llega molesto, levanta la voz y dice que la DIAN "solo sirve para robar". Usted:',
+['Le responde en el mismo tono para hacerse respetar.','Mantiene la calma, escucha, le explica con lenguaje claro su situación y las opciones que tiene.','Le pide que se retire sin atenderlo.'],1,'Orientación al usuario y comunicación efectiva: escucha activa, calma y claridad.','Orientación al usuario y al ciudadano');
+P('comp','Su equipo tiene una meta de cierre de investigaciones y un compañero está atrasado porque no domina un procedimiento que usted conoce bien. Usted:',
+['Le ofrece apoyo y comparte lo que sabe para que el equipo cumpla.','Espera a que el jefe lo note.','Se concentra solo en sus metas individuales.'],0,'Trabajo en equipo: compartir conocimiento y colaborar para resultados comunes.','Trabajo en equipo N3');
+P('comp','La entidad implementa un nuevo sistema informático que cambia la forma de registrar las actuaciones. Usted:',
+['Sigue usando el método anterior en paralelo porque le parece más fácil.','Se capacita, aprende el nuevo sistema y propone mejoras por los canales correspondientes.','Espera a que todos lo dominen para empezar a usarlo.'],1,'Adaptabilidad: asumir los cambios con disposición y aprendizaje.','Adaptabilidad N3');
+P('comp','Entra en vigencia una norma que cambia un procedimiento que usted aplica a diario. Usted:',
+['Estudia la nueva norma, la aplica y comparte con el equipo los cambios relevantes.','Sigue aplicando el procedimiento anterior hasta que alguien le diga.','Critica la norma frente a los contribuyentes.'],0,'Adaptabilidad y orientación al logro.','Adaptabilidad');
+P('comp','Debe explicar a un contribuyente sin formación contable por qué se le propone un mayor impuesto. Lo más adecuado es:',
+['Usar términos técnicos para demostrar dominio del tema.','Explicar en lenguaje claro los hechos, la norma aplicable y los derechos que tiene para controvertir.','Entregarle el acto y decirle que lo lea.'],1,'Comunicación efectiva con lenguaje claro.','Comunicación efectiva N3');
+P('comp','En una reunión, un compañero propone una idea que usted considera equivocada. Usted:',
+['Lo desautoriza frente a todos.','Expone respetuosamente sus argumentos y escucha los de él para llegar a la mejor decisión.','No dice nada y luego critica la idea en los pasillos.'],1,'Comunicación efectiva y trabajo en equipo: diálogo respetuoso y argumentado.','Trabajo en equipo');
+P('comp','Tiene varios expedientes con términos próximos a vencerse y una tarea nueva urgente. Lo más adecuado es:',
+['Priorizar según los vencimientos y el impacto, informar a su jefe la situación y acordar prioridades.','Atender solo la tarea nueva porque es la más reciente.','Dejar vencer algunos términos porque la carga es excesiva.'],0,'Orientación al logro: planificar, priorizar y comunicar oportunamente.','Orientación al logro');
+P('comp','Al revisar su propio trabajo detecta que la meta del mes no se cumplirá por un cuello de botella en el proceso. Usted:',
+['Espera el cierre del mes y justifica el incumplimiento.','Analiza la causa, propone acciones concretas y las comunica a tiempo a su superior.','Reporta cifras infladas para cumplir la meta.'],1,'Orientación al logro e integridad: anticiparse y proponer soluciones.','Orientación al logro');
+P('comp','Un ciudadano le pide atención preferencial argumentando que conoce al director seccional. Usted:',
+['Lo atiende primero para evitar problemas.','Lo atiende en igualdad de condiciones con los demás, según los turnos y la normativa de atención preferencial.','Lo remite directamente al director.'],1,'Igualdad e imparcialidad en el servicio.','Orientación al usuario; art. 3 CPACA');
+P('comp','Dos compañeros de su equipo tienen un conflicto que está afectando el trabajo. Como integrante del equipo, usted:',
+['Toma partido por el que tiene la razón.','Promueve el diálogo respetuoso entre ellos y, si persiste, informa al jefe para que medie.','Ignora la situación.'],1,'Trabajo en equipo: manejo constructivo de conflictos.','Trabajo en equipo');
+P('comp','Un ciudadano le hace una pregunta cuya respuesta usted no conoce con certeza. Usted:',
+['Le da una respuesta aproximada para no quedar mal.','Le indica que verificará la información o lo orienta hacia el área competente, evitando darle información errónea.','Le dice que busque en internet.'],1,'Orientación al usuario: información veraz y oportuna.','Orientación al usuario');
+P('comp','Su jefe le asigna temporalmente funciones de otra área por necesidades del servicio. Usted:',
+['Acepta, se informa sobre los procedimientos del área y cumple con calidad.','Se niega porque no corresponde a su cargo.','Acepta pero hace lo mínimo.'],0,'Adaptabilidad y compromiso, dentro del marco de las funciones del nivel.','Adaptabilidad');
+// Entrenador de autoinforme tipo Likert (4 opciones), como la prueba real de Comportamentales e Integridad.
+// c: competencia · inv: ítem invertido (estar de acuerdo es desfavorable) · ctrl: ítem de control de deseabilidad social
+// par: ítems que miden la misma idea en sentido opuesto (para medir consistencia)
+window.LIKERT_COMP = {
+  etico:'Comportamiento ético', comu:'Comunicación efectiva', equipo:'Trabajo en equipo',
+  adapt:'Adaptabilidad', logro:'Orientación al logro', usuario:'Orientación al usuario', integ:'Integridad'
+};
+window.LIKERT = [
+ {c:'etico', t:'Cuando detecto una irregularidad en mi trabajo, la reporto por los canales establecidos aunque me genere incomodidad.', par:'e1'},
+ {c:'etico', t:'Si un error no perjudica a nadie, no vale la pena reportarlo.', inv:true, par:'e1'},
+ {c:'etico', t:'Rechazo cualquier beneficio personal que me ofrezcan por realizar mi trabajo.', par:'e2'},
+ {c:'etico', t:'Recibir un detalle pequeño de un usuario satisfecho es aceptable.', inv:true, par:'e2'},
+ {c:'integ', t:'Cumplo las normas aunque nadie me esté supervisando.', par:'i1'},
+ {c:'integ', t:'Algunas normas se pueden flexibilizar cuando el resultado final es bueno.', inv:true, par:'i1'},
+ {c:'integ', t:'Utilizo la información a la que tengo acceso solo para fines del trabajo.', par:'i2'},
+ {c:'integ', t:'Consultar información de conocidos en los sistemas de trabajo es aceptable si no se divulga.', inv:true, par:'i2'},
+ {c:'integ', t:'Cuando cometo un error, lo reconozco ante los demás.', par:'i3'},
+ {c:'integ', t:'Prefiero corregir mis errores sin que los demás se enteren, aunque deba omitir información.', inv:true, par:'i3'},
+ {c:'comu', t:'Me aseguro de que la otra persona haya entendido lo que le explico.', par:'c1'},
+ {c:'comu', t:'Si alguien no entiende mis explicaciones, es su problema.', inv:true, par:'c1'},
+ {c:'comu', t:'Escucho con atención antes de responder, aun cuando no estoy de acuerdo.'},
+ {c:'equipo', t:'Comparto con mis compañeros la información que puede facilitar su trabajo.', par:'q1'},
+ {c:'equipo', t:'Prefiero guardar lo que sé para destacarme frente a los demás.', inv:true, par:'q1'},
+ {c:'equipo', t:'Reconozco públicamente los aportes de mis compañeros.'},
+ {c:'adapt', t:'Me adapto con facilidad cuando cambian los procedimientos de trabajo.', par:'a1'},
+ {c:'adapt', t:'Los cambios frecuentes en la forma de trabajar me hacen perder la motivación.', inv:true, par:'a1'},
+ {c:'adapt', t:'Aprendo rápidamente a usar nuevas herramientas tecnológicas cuando el trabajo lo requiere.'},
+ {c:'logro', t:'Planifico mis actividades para cumplir los plazos establecidos.', par:'l1'},
+ {c:'logro', t:'Suelo dejar las tareas importantes para el último momento.', inv:true, par:'l1'},
+ {c:'logro', t:'Busco formas de mejorar los resultados de mi trabajo.'},
+ {c:'usuario', t:'Trato a todos los usuarios con el mismo respeto, sin importar su condición.', par:'u1'},
+ {c:'usuario', t:'Es normal dar un trato más ágil a las personas conocidas.', inv:true, par:'u1'},
+ {c:'usuario', t:'Mantengo la calma cuando un usuario me trata de manera grosera.'},
+ // Ítems de control (deseabilidad social): afirmaciones absolutas e irreales
+ {c:'ctrl', ctrl:true, t:'Nunca en mi vida he dicho una mentira, ni siquiera pequeña.'},
+ {c:'ctrl', ctrl:true, t:'Jamás he sentido enojo con un compañero de trabajo.'},
+ {c:'ctrl', ctrl:true, t:'Nunca he llegado tarde a ningún compromiso.'},
+ {c:'ctrl', ctrl:true, t:'Siempre, sin excepción, estoy de buen humor en el trabajo.'},
+ {c:'ctrl', ctrl:true, t:'Nunca he aplazado una tarea que debía hacer.'}
+];
+(function(){
+'use strict';
+const T = window.TEMAS, BANK = window.BANK, EX = window.EXAMEN;
+const TM = Object.fromEntries(T.map(t=>[t.id,t]));
+const FUNC = T.filter(t=>t.peso>0).map(t=>t.id);
+const CONDUCT = ['comp','integ'];
+const PRACT_W = Object.assign({}, Object.fromEntries(T.map(t=>[t.id,t.peso||7])));
+const KEY = 'dian2676-gestorII-v1';
+const $ = s=>document.querySelector(s);
+const esc = s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// ---------- estado ----------
+let S = load();
+function blank(){ return {qs:{}, sims:[], likert:[], hist:[], started:Date.now()}; }
+function load(){ try{ const r=localStorage.getItem(KEY); if(r) return Object.assign(blank(), JSON.parse(r)); }catch(e){} return blank(); }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+function rec(q, ok){
+  const r = S.qs[q.id] || {n:0,ok:0,box:0,last:0,wrong:0};
+  r.n++; if(ok){ r.ok++; r.box=Math.min(4,r.box+1);} else { r.wrong++; r.box=0; }
+  r.last = Date.now(); S.qs[q.id]=r;
+  const d=today(); let h=S.hist.find(x=>x.d===d); if(!h){h={d,n:0,ok:0};S.hist.push(h);} h.n++; if(ok)h.ok++;
+  save();
+}
+function today(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+
+// ---------- motor adaptativo ----------
+function topicStats(t){
+  const qs = BANK.filter(q=>q.t===t);
+  let n=0, ok=0, seen=0, mastered=0;
+  qs.forEach(q=>{ const r=S.qs[q.id]; if(r){ n+=r.n; ok+=r.ok; seen++; if(r.box>=2) mastered++; } });
+  // incluye resultados de simulacros (ya registrados por pregunta)
+  const acc = n ? ok/n : null;
+  const mastery = (mastered + 0.5*(seen-mastered)*(acc??0)) / qs.length; // 0..1
+  return {total:qs.length, n, ok, seen, mastered, acc, mastery};
+}
+function priority(t){
+  const st = topicStats(t);
+  const weak = st.acc===null ? 0.75 : (1 - st.acc);
+  return PRACT_W[t] * (0.35 + weak) * (1.15 - st.mastery);
+}
+function ranking(){
+  return T.map(t=>({id:t.id, p:priority(t.id), st:topicStats(t.id)})).sort((a,b)=>b.p-a.p);
+}
+function qWeight(q){
+  const r=S.qs[q.id];
+  if(!r) return 2.2;
+  const hrs = (Date.now()-r.last)/36e5;
+  const boxF = [3.2,1.6,0.9,0.5,0.25][r.box];
+  const fresh = hrs<0.2 ? 0.05 : Math.min(1.5, 0.4 + hrs/24);
+  return boxF*fresh*(r.wrong>r.ok?1.4:1);
+}
+function wpick(arr, wf, n){
+  const pool=arr.slice(), out=[];
+  while(out.length<n && pool.length){
+    const ws=pool.map(wf), tot=ws.reduce((a,b)=>a+b,0); let x=Math.random()*tot, i=0;
+    for(;i<pool.length;i++){ x-=ws[i]; if(x<=0) break; }
+    out.push(pool.splice(Math.min(i,pool.length-1),1)[0]);
+  }
+  return out;
+}
+function adaptiveSet(n, onlyTopics){
+  const tops = onlyTopics || T.map(t=>t.id);
+  const pr = Object.fromEntries(tops.map(t=>[t,priority(t)]));
+  const cand = BANK.filter(q=>tops.includes(q.t));
+  return wpick(cand, q=>pr[q.t]*qWeight(q), n);
+}
+function simSet(n){
+  const nf = Math.round(n*0.8), nc = n-nf;
+  const totW = FUNC.reduce((a,t)=>a+TM[t].peso,0);
+  let out=[];
+  FUNC.forEach(t=>{ const k=Math.max(1,Math.round(nf*TM[t].peso/totW)); out=out.concat(wpick(BANK.filter(q=>q.t===t),()=>1,k)); });
+  out = out.slice(0,nf);
+  out = out.concat(wpick(BANK.filter(q=>CONDUCT.includes(q.t)),()=>1,nc));
+  return out;
+}
+function shuffleOpts(q){
+  const idx=[0,1,2].sort(()=>Math.random()-0.5);
+  return {q, opts:idx.map(i=>q.o[i]), correct:idx.indexOf(q.a)};
+}
+
+// ---------- utilidades de fecha ----------
+function daysLeft(){ const ms=new Date(EX.fecha)-new Date(); return Math.ceil(ms/864e5); }
+
+// ---------- navegación ----------
+let view='inicio', session=null, timer=null;
+function go(v, arg){ view=v; clearInterval(timer); timer=null; render(arg); window.scrollTo(0,0);
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on', b.dataset.v===v || (v==='quiz'&&b.dataset.v==='practicar'))); }
+document.addEventListener('click', e=>{
+  const b=e.target.closest('[data-go]'); if(b){ e.preventDefault(); go(b.dataset.go, b.dataset.arg); }
+});
+
+function render(arg){
+  const m=$('#main');
+  if(view==='inicio') m.innerHTML = vInicio();
+  else if(view==='temas') m.innerHTML = vTemas();
+  else if(view==='tema') m.innerHTML = vTema(arg);
+  else if(view==='practicar') m.innerHTML = vPracticar();
+  else if(view==='simulacro') m.innerHTML = vSimIntro();
+  else if(view==='likert') { m.innerHTML = vLikertIntro(); }
+  else if(view==='progreso') m.innerHTML = vProgreso();
+  else if(view==='info') m.innerHTML = vInfo();
+  bindView(arg);
+}
+
+// ---------- vistas ----------
+function bar(v, cls){ const p=Math.round((v||0)*100); return `<span class="bar ${cls||''}"><i style="width:${p}%"></i></span>`; }
+function pct(v){ return v===null||v===undefined ? '—' : Math.round(v*100)+'%'; }
+
+function planHoy(){
+  const r = ranking().filter(x=>!CONDUCT.includes(x.id));
+  const weak = r.slice(0,3);
+  const dl = daysLeft();
+  const lastSim = S.sims[S.sims.length-1];
+  const simToday = !lastSim || (Date.now()-lastSim.t) > 2.5*864e5 || dl<=3;
+  const items=[];
+  items.push({h:`Práctica adaptativa · 25 preguntas`, s:`Enfocada en ${weak.map(w=>TM[w.id].nombre).join(', ')}`, go:'practicar'});
+  items.push({h:`Repasa la ficha: ${TM[weak[0].id].nombre}`, s:TM[weak[0].id].eje, go:'tema', arg:weak[0].id});
+  const cr = ranking().filter(x=>CONDUCT.includes(x.id))[0];
+  items.push({h:`Casos de ${TM[cr.id].nombre.toLowerCase()} · 10 preguntas`, s:'Entrena el criterio ético y de servicio que evalúa la prueba clasificatoria', go:'tema', arg:cr.id});
+  if(simToday) items.push({h:`Simulacro ${dl<=4?'completo de 100':'de 60'} preguntas`, s: lastSim ? `Último: ${lastSim.func} / 100 en funcionales` : 'Aún no has hecho ninguno: es tu diagnóstico inicial', go:'simulacro'});
+  if(!S.likert.length || dl<=5) items.push({h:'Entrenador Likert (autoinforme)', s:'Revisa tu consistencia y las respuestas exageradas', go:'likert'});
+  return items;
+}
+
+function vInicio(){
+  const dl=daysLeft(), r=ranking();
+  const lastSim=S.sims[S.sims.length-1];
+  const totAns = Object.values(S.qs).reduce((a,x)=>a+x.n,0);
+  const totOk = Object.values(S.qs).reduce((a,x)=>a+x.ok,0);
+  const plan = planHoy();
+  return `
+  <section class="hero">
+    <div class="hero-l">
+      <div class="eyebrow">${esc(EX.proceso)} · ${esc(EX.empleo)}</div>
+      <h1>${dl>0?`Faltan <em>${dl}</em> días`:(dl===0?'Hoy es el examen':'El examen ya pasó')}</h1>
+      <p class="lead">Domingo 8 de noviembre de 2026 · puertas 7:15 a. m. · inicio 8:00 · cierre de puertas 8:30 · 4 horas. Funcionales eliminatoria: mínimo <b>70/100</b>.</p>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><span>Último simulacro</span><b class="${lastSim?(lastSim.func>=70?'ok':'bad'):''}">${lastSim?lastSim.func:'—'}</b><small>${lastSim?'funcionales / 100':'sin simulacros aún'}</small></div>
+      <div class="kpi"><span>Aciertos totales</span><b>${totAns?Math.round(totOk/totAns*100)+'%':'—'}</b><small>${totAns} respuestas</small></div>
+      <div class="kpi"><span>Banco</span><b>${BANK.length}</b><small>preguntas + ${window.LIKERT.length} Likert</small></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="bh"><h2>Plan de hoy</h2><span class="muted">Se recalcula con cada respuesta</span></div>
+    <ol class="plan">${plan.map(p=>`<li><button class="planitem" data-go="${p.go}" ${p.arg?`data-arg="${p.arg}"`:''}><b>${esc(p.h)}</b><span>${esc(p.s)}</span><i>→</i></button></li>`).join('')}</ol>
+  </section>
+
+  <section class="block">
+    <div class="bh"><h2>Dónde estás más débil</h2><button class="link" data-go="progreso">Ver progreso →</button></div>
+    <div class="tlist">${r.map(x=>`<button class="trow" data-go="tema" data-arg="${x.id}">
+      <span class="ti">${TM[x.id].icon}</span>
+      <span class="tn"><b>${esc(TM[x.id].nombre)}</b><small>${esc(TM[x.id].grupo)} · ${x.st.seen}/${x.st.total} vistas · acierto ${pct(x.st.acc)}</small></span>
+      <span class="tb">${bar(x.st.mastery, x.st.acc===null?'':(x.st.acc>=.75?'g':x.st.acc>=.55?'y':'r'))}</span></button>`).join('')}</div>
+  </section>`;
+}
+
+function vTemas(){
+  const groups=[...new Set(T.map(t=>t.grupo))];
+  return `<div class="bh"><h1 class="h1s">Temario de la ficha AT-FL-3007</h1></div>
+  <p class="lead">Cada tema tiene una ficha con lo esencial que se evalúa y práctica dirigida. Los porcentajes son tu dominio actual.</p>
+  ${groups.map(g=>`<section class="block"><h2>${esc(g)}</h2><div class="cards">${T.filter(t=>t.grupo===g).map(t=>{const st=topicStats(t.id);return `
+    <button class="card" data-go="tema" data-arg="${t.id}"><span class="ti">${t.icon}</span><b>${esc(t.nombre)}</b><small>${esc(t.eje)}</small>${bar(st.mastery)}<small class="mono">${st.total} preguntas · acierto ${pct(st.acc)}</small></button>`;}).join('')}</div></section>`).join('')}`;
+}
+
+function vTema(id){
+  const t=TM[id], st=topicStats(id);
+  return `<button class="link" data-go="temas">← Temario</button>
+  <div class="bh"><h1 class="h1s">${t.icon} ${esc(t.nombre)}</h1></div>
+  <p class="muted">${esc(t.eje)}</p>
+  <div class="row-actions">
+    <button class="btn primary" id="tp10">Practicar 10 preguntas</button>
+    <button class="btn" id="tpall">Todas las de este tema (${st.total})</button>
+    <button class="btn" id="tperr">Solo las que he fallado</button>
+  </div>
+  <section class="ficha"><h2>Ficha de estudio</h2><ul>${t.ficha.map(f=>`<li>${esc(f)}</li>`).join('')}</ul></section>`;
+}
+
+function vPracticar(){
+  const r=ranking();
+  return `<div class="bh"><h1 class="h1s">Práctica adaptativa</h1></div>
+  <p class="lead">La app elige las preguntas según tus errores: prioriza temas débiles, repite lo que fallaste (repetición espaciada) y mezcla preguntas nuevas.</p>
+  <div class="row-actions">
+    <button class="btn primary" data-n="15">15 preguntas</button>
+    <button class="btn primary" data-n="25">25 preguntas</button>
+    <button class="btn primary" data-n="40">40 preguntas</button>
+    <button class="btn" id="perr">Repasar mis errores</button>
+  </div>
+  <section class="block"><h2>Enfoque actual</h2><div class="chips">${r.slice(0,5).map(x=>`<span class="chip">${TM[x.id].icon} ${esc(TM[x.id].nombre)}</span>`).join('')}</div></section>`;
+}
+
+function vSimIntro(){
+  return `<div class="bh"><h1 class="h1s">Simulacro</h1></div>
+  <p class="lead">Como el examen: preguntas de juicio situacional con 3 opciones, sin retroalimentación hasta el final y con tiempo. Se reparten según el peso de cada eje: 80 % funcionales y 20 % comportamentales e integridad.</p>
+  <div class="cards three">
+    <button class="card" data-sim="30"><b>Corto</b><span class="big mono">30</span><small>45 minutos</small></button>
+    <button class="card" data-sim="60"><b>Medio</b><span class="big mono">60</span><small>1 h 30 min</small></button>
+    <button class="card" data-sim="100"><b>Completo</b><span class="big mono">100</span><small>2 h 30 min · ritmo de examen</small></button>
+  </div>
+  ${S.sims.length?`<section class="block"><h2>Historial</h2>${simChart()}</section>`:''}`;
+}
+
+function simChart(){
+  const s=S.sims.slice(-12); if(!s.length) return '';
+  const W=560,H=180,p=30, x=i=>p+ (s.length===1?(W-2*p)/2:i*(W-2*p)/(s.length-1)), y=v=>H-p-(v/100)*(H-2*p);
+  const pts=s.map((m,i)=>`${x(i)},${y(m.func)}`).join(' ');
+  return `<div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Puntaje de simulacros">
+   ${[0,50,70,100].map(v=>`<line x1="${p}" x2="${W-p}" y1="${y(v)}" y2="${y(v)}" class="${v===70?'gl70':'gl'}"/><text x="4" y="${y(v)+4}" class="ax">${v}</text>`).join('')}
+   <polyline points="${pts}" class="ln"/>
+   ${s.map((m,i)=>`<circle cx="${x(i)}" cy="${y(m.func)}" r="4" class="${m.func>=70?'dot ok':'dot bad'}"/><text x="${x(i)}" y="${y(m.func)-9}" text-anchor="middle" class="ax">${m.func}</text>`).join('')}
+  </svg><small class="muted">Línea punteada: mínimo aprobatorio de 70 en funcionales.</small></div>`;
+}
+
+function vProgreso(){
+  const r=ranking();
+  const h=S.hist.slice(-14);
+  const maxN=Math.max(1,...h.map(x=>x.n));
+  return `<div class="bh"><h1 class="h1s">Progreso</h1></div>
+  ${S.sims.length?`<section class="block"><h2>Simulacros</h2>${simChart()}</section>`:''}
+  <section class="block"><h2>Dominio por tema</h2>
+  <div class="tbl"><table><thead><tr><th>Tema</th><th>Vistas</th><th>Acierto</th><th>Dominio</th></tr></thead><tbody>
+  ${r.map(x=>`<tr><td>${TM[x.id].icon} ${esc(TM[x.id].nombre)}</td><td class="mono">${x.st.seen}/${x.st.total}</td><td class="mono">${pct(x.st.acc)}</td><td>${bar(x.st.mastery)}</td></tr>`).join('')}
+  </tbody></table></div></section>
+  ${h.length?`<section class="block"><h2>Actividad diaria</h2><div class="days">${h.map(d=>`<div class="day"><i style="height:${Math.max(6,d.n/maxN*90)}px"></i><small class="mono">${d.d.slice(5)}</small><small>${d.n}</small></div>`).join('')}</div></section>`:''}
+  <section class="block"><h2>Llevar tu progreso a otro dispositivo</h2>
+   <p class="muted">El progreso se guarda en este navegador. Para continuar en el celular u otro PC, copia el código aquí y pégalo allá.</p>
+   <div class="row-actions"><button class="btn" id="exp">Copiar código de progreso</button></div>
+   <textarea id="code" rows="3" placeholder="Pega aquí el código de progreso de otro dispositivo"></textarea>
+   <div class="row-actions"><button class="btn" id="imp">Cargar código</button><button class="btn danger" id="rst">Borrar mi progreso</button></div>
+   <p id="msg" class="muted" role="status"></p>
+  </section>`;
+}
+
+function vInfo(){
+  return `<div class="bh"><h1 class="h1s">El examen DIAN 2676</h1></div>
+  <section class="ficha"><h2>Estructura y pesos</h2>
+  <div class="tbl"><table><thead><tr><th>Modalidad</th><th>Funcionales</th><th>Comportamentales</th><th>Integridad</th><th>Antecedentes</th></tr></thead><tbody>
+  <tr><td>Ingreso con experiencia</td><td>65 %</td><td>15 %</td><td>10 %</td><td>10 %</td></tr>
+  <tr><td>Ingreso sin experiencia</td><td>70 %</td><td>20 %</td><td>10 %</td><td>—</td></tr>
+  <tr><td>Ascenso con experiencia</td><td>60 %</td><td>15 %</td><td>10 %</td><td>15 %</td></tr>
+  <tr><td>Ascenso sin experiencia</td><td>65 %</td><td>20 %</td><td>10 %</td><td>5 %</td></tr></tbody></table></div>
+  <ul>
+   <li><b>Funcionales:</b> eliminatoria, mínimo 70 sobre 100. Juicio situacional con 3 opciones (A, B, C) y una sola correcta. Tu ficha exige 1 año de experiencia profesional, así que tu modalidad tiene experiencia.</li>
+   <li><b>Comportamentales e Integridad:</b> clasificatorias, autoinforme tipo Likert de 4 opciones, con dos subescalas de control que detectan respuestas exageradamente favorables. Solo se publican si apruebas funcionales.</li>
+   <li><b>Corte normativo:</b> solo normas vigentes expedidas antes del 19 de junio de 2026. La Ley 2586 de 2026 (nuevo régimen sancionatorio aduanero) es de esa fecha: prioriza conceptos y procedimientos que no cambiaron.</li>
+   <li>La Ley de Financiamiento 2025 se hundió (9-dic-2025): la última reforma tributaria aplicable es la Ley 2277 de 2022.</li>
+   <li>Responde solo en la hoja de respuestas con lápiz de mina negra N.º 2. Lo escrito en el cuadernillo no cuenta.</li>
+   <li>Citación en SIMO al menos 5 días hábiles antes. Reclamaciones: 5 días hábiles desde la publicación de resultados.</li>
+  </ul></section>
+  <section class="ficha"><h2>Competencias de tu ficha</h2>
+  <ul><li><b>Funcionales:</b> determinación y control tributario; régimen cambiario; fiscalización internacional; fiscalización aduanera.</li>
+  <li><b>Comportamentales (nivel):</b> Comportamiento ético 4 · Comunicación efectiva 3 · Adaptabilidad 3 · Trabajo en equipo 3. Básicas: orientación al logro y orientación al usuario.</li>
+  <li><b>Ejes básicos:</b> Constitución, Ley 1437 de 2011 (Títulos I, II y III caps. I y V-VIII), PQRSF, servicio al ciudadano, gestión documental, MIPG, códigos de integridad y buen gobierno, herramientas informáticas, evasión-elusión-contrabando y ley de transparencia.</li></ul></section>
+  <section class="ficha"><h2>Fuentes oficiales para estudiar</h2><ul>
+  <li><a href="https://www.cnsc.gov.co/convocatorias/dian-2676" target="_blank" rel="noopener">CNSC · Proceso DIAN 2676 (acuerdo, anexo, guía)</a></li>
+  <li><a href="https://simo.cnsc.gov.co/" target="_blank" rel="noopener">SIMO · citación y resultados</a></li>
+  <li><a href="https://normograma.dian.gov.co/dian/" target="_blank" rel="noopener">Normograma DIAN · Estatuto Tributario, Decreto 1165, DL 2245, doctrina</a></li>
+  <li><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=41249" target="_blank" rel="noopener">Ley 1437 de 2011 (CPACA)</a></li>
+  <li><a href="https://www.funcionpublica.gov.co/web/mipg" target="_blank" rel="noopener">MIPG · Función Pública</a></li>
+  </ul></section>`;
+}
+
+// ---------- quiz ----------
+function startQuiz(list, mode, title){
+  if(!list.length){ $('#main').insertAdjacentHTML('afterbegin','<p class="note">No hay preguntas para esa selección todavía.</p>'); return; }
+  session={mode, title, items:list.map(shuffleOpts), i:0, ans:[], t0:Date.now()};
+  if(mode==='sim'){ session.limit = Math.round(list.length*1.5*60); }
+  view='quiz'; drawQ();
+}
+function drawQ(){
+  const s=session, it=s.items[s.i], q=it.q, m=$('#main');
+  const a=s.ans[s.i];
+  const showFb = s.mode!=='sim' && a!==undefined;
+  m.innerHTML = `
+  <div class="qtop"><span class="mono">${esc(s.title)} · ${s.i+1}/${s.items.length}</span>
+   ${s.mode==='sim'?'<span id="clock" class="mono clock"></span>':''}
+   <button class="link" id="qquit">${s.mode==='sim'?'Terminar y calificar':'Salir'}</button></div>
+  <div class="prog">${bar((s.i)/s.items.length)}</div>
+  <article class="qcard">
+   <div class="qtag">${TM[q.t].icon} ${esc(TM[q.t].nombre)}</div>
+   <p class="qtext">${esc(q.q)}</p>
+   <div class="opts">${it.opts.map((o,k)=>{
+     let cls=''; if(showFb){ if(k===it.correct) cls='right'; else if(k===a) cls='wrong'; } else if(a===k) cls='sel';
+     return `<button class="opt ${cls}" data-k="${k}" ${showFb?'disabled':''}><span class="L">${'ABC'[k]}</span><span>${esc(o)}</span></button>`;}).join('')}</div>
+   ${showFb?`<div class="fb ${a===it.correct?'ok':'bad'}"><b>${a===it.correct?'Correcto.':'Incorrecto.'}</b> ${esc(q.e)} ${q.r?`<span class="ref mono">${esc(q.r)}</span>`:''}</div>`:''}
+  </article>
+  <div class="qnav">
+   <button class="btn" id="qprev" ${s.i===0?'disabled':''}>← Anterior</button>
+   ${s.i<s.items.length-1?`<button class="btn primary" id="qnext" ${(s.mode!=='sim'&&a===undefined)?'disabled':''}>Siguiente →</button>`:`<button class="btn primary" id="qend">${s.mode==='sim'?'Calificar simulacro':'Ver resultado'}</button>`}
+  </div>
+  ${s.mode==='sim'?`<div class="grid-nav">${s.items.map((_,k)=>`<button class="gn ${s.ans[k]!==undefined?'done':''} ${k===s.i?'cur':''}" data-j="${k}">${k+1}</button>`).join('')}</div>`:''}`;
+  m.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+    const k=+b.dataset.k;
+    if(s.mode==='sim'){ s.ans[s.i]=k; drawQ(); }
+    else if(s.ans[s.i]===undefined){ s.ans[s.i]=k; rec(q, k===it.correct); drawQ(); }
+  });
+  const nx=$('#qnext'); if(nx) nx.onclick=()=>{s.i++;drawQ();};
+  const pv=$('#qprev'); if(pv) pv.onclick=()=>{s.i--;drawQ();};
+  const en=$('#qend'); if(en) en.onclick=finish;
+  $('#qquit').onclick=()=> s.mode==='sim'?finish():go('inicio');
+  m.querySelectorAll('.gn').forEach(b=>b.onclick=()=>{s.i=+b.dataset.j;drawQ();});
+  if(s.mode==='sim') tick();
+  window.scrollTo(0,0);
+}
+function tick(){
+  clearInterval(timer);
+  const upd=()=>{ const left=session.limit-Math.floor((Date.now()-session.t0)/1000); const c=$('#clock'); if(!c) return;
+    if(left<=0){ clearInterval(timer); finish(); return; }
+    c.textContent=`${Math.floor(left/3600)}:${String(Math.floor(left%3600/60)).padStart(2,'0')}:${String(left%60).padStart(2,'0')}`; c.classList.toggle('late', left<300); };
+  upd(); timer=setInterval(upd,1000);
+}
+function finish(){
+  clearInterval(timer);
+  const s=session; const per={}; let fOk=0,fN=0,cOk=0,cN=0;
+  s.items.forEach((it,k)=>{
+    const ok = s.ans[k]===it.correct; const t=it.q.t;
+    if(s.mode==='sim') rec(it.q, ok);
+    per[t]=per[t]||[0,0]; per[t][1]++; if(ok) per[t][0]++;
+    if(CONDUCT.includes(t)){cN++; if(ok)cOk++;} else {fN++; if(ok)fOk++;}
+  });
+  const func = fN?Math.round(fOk/fN*100):0, cond = cN?Math.round(cOk/cN*100):null;
+  if(s.mode==='sim'){ S.sims.push({t:Date.now(), n:s.items.length, func, cond, per, mins:Math.round((Date.now()-s.t0)/60000)}); save(); }
+  const wrong = s.items.map((it,k)=>({it,a:s.ans[k]})).filter(x=>x.a!==x.it.correct);
+  const weakT = Object.entries(per).map(([t,[o,n]])=>({t,acc:o/n,n})).sort((a,b)=>a.acc-b.acc);
+  const m=$('#main'); view='result';
+  m.innerHTML = `
+  <div class="bh"><h1 class="h1s">Resultado · ${esc(s.title)}</h1></div>
+  <section class="result">
+   <div class="score ${func>=70?'ok':'bad'}"><span class="mono">${fN?func:'—'}</span><small>${fN?'Competencias funcionales / 100':''}</small><b>${fN?(func>=70?'Superas el mínimo de 70':'Por debajo del mínimo de 70'):''}</b></div>
+   ${cond!==null?`<div class="score sm"><span class="mono">${cond}</span><small>Casos comportamentales e integridad</small></div>`:''}
+  </section>
+  <section class="block"><h2>Por tema</h2><div class="tbl"><table><tbody>
+   ${weakT.map(w=>`<tr><td>${TM[w.t].icon} ${esc(TM[w.t].nombre)}</td><td class="mono">${Math.round(w.acc*w.n)}/${w.n}</td><td>${bar(w.acc, w.acc>=.75?'g':w.acc>=.55?'y':'r')}</td><td><button class="link" data-go="tema" data-arg="${w.t}">Ficha →</button></td></tr>`).join('')}
+  </tbody></table></div>
+  <p class="note">Tu plan de estudio ya se ajustó: la práctica adaptativa priorizará ${weakT.filter(w=>w.acc<.75).slice(0,3).map(w=>TM[w.t].nombre).join(', ')||'mantener lo que dominas'}.</p>
+  <div class="row-actions"><button class="btn primary" id="rfocus">Practicar mis temas débiles</button><button class="btn" data-go="inicio">Volver al inicio</button></div></section>
+  ${wrong.length?`<section class="block"><h2>Revisión de errores (${wrong.length})</h2>${wrong.map(({it,a})=>`<div class="rev"><p class="qtext sm">${esc(it.q.q)}</p>
+    ${a!==undefined?`<p class="wrongtxt">Tu respuesta: ${esc(it.opts[a])}</p>`:'<p class="wrongtxt">Sin responder</p>'}
+    <p class="righttxt">Correcta: ${esc(it.opts[it.correct])}</p><p class="muted">${esc(it.q.e)} <span class="ref mono">${esc(it.q.r)}</span></p></div>`).join('')}</section>`:''}`;
+  $('#rfocus').onclick=()=>{ const ts=weakT.filter(w=>w.acc<.8).map(w=>w.t); startQuiz(adaptiveSet(20, ts.length?ts:null),'prac','Refuerzo de temas débiles'); };
+  window.scrollTo(0,0);
+}
+
+// ---------- Likert ----------
+const LOPT=['Totalmente en desacuerdo','En desacuerdo','De acuerdo','Totalmente de acuerdo'];
+function vLikertIntro(){
+  const last=S.likert[S.likert.length-1];
+  return `<div class="bh"><h1 class="h1s">Entrenador Likert</h1></div>
+  <p class="lead">La prueba real de Comportamentales e Integridad es un autoinforme: lees afirmaciones y marcas qué tan de acuerdo estás. No hay respuestas "de memoria"; lo que se mide es tu perfil y su coherencia.</p>
+  <section class="ficha"><h2>Cómo se lee este entrenamiento</h2><ul>
+   <li><b>Ítems directos e invertidos:</b> algunas frases describen una conducta deseable y otras su opuesto. Si estás de acuerdo con ambas, tu perfil es inconsistente.</li>
+   <li><b>Ítems de control:</b> frases absolutas e irreales ("nunca he mentido"). Marcar "Totalmente de acuerdo" en ellas indica deseabilidad social, que la prueba real detecta.</li>
+   <li>Responde como actuarías de verdad, con apego a los principios del servicio público. Ser realista no te resta; exagerar sí puede afectar qué ítems se califican.</li></ul></section>
+  <div class="row-actions"><button class="btn primary" id="lstart">Empezar (${window.LIKERT.length} afirmaciones, ~5 min)</button></div>
+  ${last?`<section class="block"><h2>Último resultado</h2>${likertReport(last)}</section>`:''}`;
+}
+function startLikert(){
+  const items = window.LIKERT.map((x,i)=>({...x,i})).sort(()=>Math.random()-0.5);
+  const ans={}; const m=$('#main');
+  m.innerHTML = `<div class="bh"><h1 class="h1s">Autoinforme</h1></div><p class="muted">Marca una opción en cada afirmación.</p>
+  <div class="lk">${items.map((it,k)=>`<fieldset class="lki"><legend><span class="mono">${k+1}.</span> ${esc(it.t)}</legend>
+   <div class="lko">${LOPT.map((o,v)=>`<label><input type="radio" name="lk${it.i}" id="lk${it.i}_${v}" value="${v}"><span>${o}</span></label>`).join('')}</div></fieldset>`).join('')}</div>
+  <div class="row-actions"><button class="btn primary" id="lend">Ver mi perfil</button></div><p id="lmsg" class="muted" role="status"></p>`;
+  m.querySelectorAll('input[type=radio]').forEach(r=>r.onchange=()=>{ ans[r.name.slice(2)]=+r.value; });
+  $('#lend').onclick=()=>{
+    if(Object.keys(ans).length<window.LIKERT.length){ $('#lmsg').textContent=`Te faltan ${window.LIKERT.length-Object.keys(ans).length} afirmaciones por responder.`; return; }
+    const res={t:Date.now(), a:ans}; S.likert.push(res); save();
+    m.innerHTML = `<div class="bh"><h1 class="h1s">Tu perfil</h1></div>${likertReport(res)}<div class="row-actions"><button class="btn" data-go="likert">Volver</button></div>`;
+    window.scrollTo(0,0);
+  };
+}
+function likertReport(res){
+  const L=window.LIKERT, C=window.LIKERT_COMP, a=res.a;
+  const by={}; let ctrlHi=0, ctrlN=0; const pairs={};
+  L.forEach((it,i)=>{ const v=a[i]; if(v===undefined) return;
+    if(it.ctrl){ ctrlN++; if(v===3) ctrlHi++; return; }
+    const sc = it.inv ? 3-v : v; (by[it.c]=by[it.c]||[]).push(sc);
+    if(it.par){ (pairs[it.par]=pairs[it.par]||[]).push({inv:!!it.inv, v}); }
+  });
+  let incons=[];
+  Object.entries(pairs).forEach(([p,arr])=>{ if(arr.length===2){ const d=arr.find(x=>!x.inv), r=arr.find(x=>x.inv); if(d&&r&&d.v>=2&&r.v>=2) incons.push(p);} });
+  const flag = ctrlHi>=2;
+  return `<div class="tbl"><table><thead><tr><th>Competencia</th><th>Perfil</th><th></th></tr></thead><tbody>
+  ${Object.entries(by).map(([c,arr])=>{const m=arr.reduce((x,y)=>x+y,0)/(arr.length*3);return `<tr><td>${esc(C[c])}</td><td>${bar(m, m>=.75?'g':m>=.5?'y':'r')}</td><td class="mono">${Math.round(m*100)}</td></tr>`;}).join('')}
+  </tbody></table></div>
+  <div class="fb ${flag?'bad':'ok'}"><b>Escala de control:</b> marcaste "Totalmente de acuerdo" en ${ctrlHi} de ${ctrlN} afirmaciones absolutas. ${flag?'Este patrón se lee como respuesta exageradamente favorable. En el examen, ante frases con "nunca", "siempre" o "jamás" que nadie cumple al 100 %, responde con realismo.':'Bien: respondes con realismo ante afirmaciones absolutas.'}</div>
+  <div class="fb ${incons.length?'bad':'ok'}"><b>Consistencia:</b> ${incons.length?`estuviste de acuerdo con afirmaciones opuestas en ${incons.length} par(es). Revisa con calma: si apoyas "reporto las irregularidades", no deberías apoyar "un error menor no vale la pena reportarlo".`:'tus respuestas a afirmaciones opuestas son coherentes.'}</div>
+  <p class="muted">Este entrenador no reproduce la prueba real ni su calificación; sirve para que reconozcas el formato y revises tu coherencia.</p>`;
+}
+
+// ---------- enlaces de eventos por vista ----------
+function bindView(arg){
+  if(view==='tema'){
+    $('#tp10').onclick=()=>startQuiz(adaptiveSet(10,[arg]),'prac',TM[arg].nombre);
+    $('#tpall').onclick=()=>startQuiz(BANK.filter(q=>q.t===arg).sort(()=>Math.random()-0.5),'prac',TM[arg].nombre);
+    $('#tperr').onclick=()=>startQuiz(BANK.filter(q=>q.t===arg && S.qs[q.id] && S.qs[q.id].box===0),'prac',TM[arg].nombre+' · errores');
+  }
+  if(view==='practicar'){
+    document.querySelectorAll('[data-n]').forEach(b=>b.onclick=()=>startQuiz(adaptiveSet(+b.dataset.n),'prac','Práctica adaptativa'));
+    $('#perr').onclick=()=>startQuiz(BANK.filter(q=>S.qs[q.id] && S.qs[q.id].box===0).sort(()=>Math.random()-0.5).slice(0,30),'prac','Repaso de errores');
+  }
+  if(view==='simulacro') document.querySelectorAll('[data-sim]').forEach(b=>b.onclick=()=>startQuiz(simSet(+b.dataset.sim),'sim',`Simulacro ${b.dataset.sim}`));
+  if(view==='likert') $('#lstart').onclick=startLikert;
+  if(view==='progreso'){
+    $('#exp').onclick=()=>{ const code=btoa(unescape(encodeURIComponent(JSON.stringify(S)))); const ta=$('#code'); ta.value=code;
+      const done=()=>$('#msg').textContent='Código copiado. Pégalo en la app desde tu otro dispositivo.';
+      try{ navigator.clipboard.writeText(code).then(done,()=>{ta.select();$('#msg').textContent='Selecciona y copia el código del cuadro.';}); }catch(e){ ta.select(); $('#msg').textContent='Selecciona y copia el código del cuadro.'; } };
+    $('#imp').onclick=()=>{ try{ const o=JSON.parse(decodeURIComponent(escape(atob($('#code').value.trim())))); if(!o.qs) throw 0; S=Object.assign(blank(),o); save(); $('#msg').textContent='Progreso cargado.'; setTimeout(()=>go('progreso'),600);}catch(e){ $('#msg').textContent='Ese código no es válido. Cópialo completo desde la opción "Copiar código de progreso".'; } };
+    let armed=false; $('#rst').onclick=e=>{ if(!armed){armed=true; e.target.textContent='Toca otra vez para confirmar'; return;} S=blank(); save(); go('progreso'); };
+  }
+}
+
+go('inicio');
+})();
+</script>
+
+</body>
+</html>
